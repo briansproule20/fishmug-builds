@@ -21,8 +21,8 @@ export function NavigationMenu() {
   const aiNavItems = [
     { href: '/ai', label: 'AI Home', icon: Sparkles },
     { href: '/chat', label: 'Chat', icon: MessageSquare },
-    { href: '/video', label: 'Video Generation', icon: Video },
     { href: '/image', label: 'Image Generation', icon: ImageIcon },
+    { href: '/video', label: 'Video Generation', icon: Video },
   ];
 
   return (

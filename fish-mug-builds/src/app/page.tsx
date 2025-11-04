@@ -45,8 +45,11 @@ export default async function Home() {
         <h1 className="mb-4 font-bold text-5xl tracking-tight">
           fishmug builds
         </h1>
-        <p className="mx-auto max-w-2xl text-gray-600 text-xl">
-          Apps I've built to spark creativity, solve problems, and have fun.
+        <p className="mx-auto max-w-2xl text-gray-500 text-lg">
+          english lit grad turned dev
+        </p>
+        <p className="mx-auto mt-2 max-w-2xl text-gray-600 text-xl">
+          apps I've built to spark creativity, solve problems, and have fun
         </p>
       </div>
 
@@ -76,16 +79,25 @@ export default async function Home() {
             <div className="mb-4 flex items-center justify-center rounded-lg bg-gradient-to-br from-purple-100 to-blue-100 p-4 w-fit">
               <Sparkles className="size-10 text-purple-600" />
             </div>
-            <CardTitle className="text-3xl">AI Studio</CardTitle>
+            <CardTitle className="text-3xl">Echo Studio</CardTitle>
             <CardDescription className="text-lg">
-              Access powerful AI tools for creation and automation
+              explore{' '}
+              <a
+                href="https://echo.merit.systems/dashboard"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                Echo
+              </a>{' '}
+              chat, image, and video templates
             </CardDescription>
           </CardHeader>
           <CardContent className="mt-auto">
             <Link href="/ai">
               <Button className="w-full" size="lg">
                 <Sparkles className="mr-2 size-5" />
-                Enter AI Studio
+                Enter Echo Studio
               </Button>
             </Link>
           </CardContent>
