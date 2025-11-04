@@ -1,18 +1,29 @@
+'use client';
+
 import { EchoAccount } from '@/components/echo-account-next';
-import { isSignedIn } from '@/echo';
 import { NavigationMenu } from './navigation-menu';
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import type { FC } from 'react';
 
 interface HeaderProps {
   title?: string;
   className?: string;
+  signedIn?: boolean;
 }
 
-const Header: FC<HeaderProps> = async ({
+const Header: FC<HeaderProps> = ({
   title = 'fishmug builds',
   className = '',
+  signedIn = false,
 }) => {
-  const signedIn = await isSignedIn();
+  const pathname = usePathname();
+
+  // Check if current page is in the AI section
+  const isAISection = ['/ai', '/chat', '/video', '/image'].some(path =>
+    pathname.startsWith(path)
+  );
 
   return (
     <header
@@ -21,12 +32,23 @@ const Header: FC<HeaderProps> = async ({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <h1 className="font-semibold text-gray-900 text-xl">{title}</h1>
+            <Link href="/" className="flex items-center gap-3 group">
+              <Image
+                src="/fishmug-builds.png"
+                alt="fishmug builds logo"
+                width={40}
+                height={40}
+                className="transition-transform group-hover:scale-105"
+              />
+              <h1 className="cursor-pointer font-semibold text-gray-900 text-xl group-hover:text-gray-700 transition-colors">
+                {title}
+              </h1>
+            </Link>
           </div>
 
           {signedIn && (
             <nav className="flex items-center space-x-2">
-              <EchoAccount />
+              {isAISection && <EchoAccount />}
               <NavigationMenu />
             </nav>
           )}

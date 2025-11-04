@@ -46,7 +46,7 @@ export default async function Home() {
           fishmug builds
         </h1>
         <p className="mx-auto max-w-2xl text-gray-600 text-xl">
-          Explore our collection of AI-powered tools and applications
+          Apps I've built to spark creativity, solve problems, and have fun.
         </p>
       </div>
 

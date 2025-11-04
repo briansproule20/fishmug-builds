@@ -1,5 +1,6 @@
 import Header from '@/app/_components/header';
 import { Providers } from '@/providers';
+import { isSignedIn } from '@/echo';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -17,20 +18,40 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'fishmug builds',
   description: 'AI-powered applications with Echo billing integration',
+  openGraph: {
+    title: 'fishmug builds',
+    description: 'AI-powered applications with Echo billing integration',
+    images: [
+      {
+        url: '/fishmug-builds.png',
+        width: 512,
+        height: 512,
+        alt: 'fishmug builds logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'fishmug builds',
+    description: 'AI-powered applications with Echo billing integration',
+    images: ['/fishmug-builds.png'],
+  },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const signedIn = await isSignedIn();
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex h-screen flex-col antialiased`}
       >
         <Providers>
-          <Header title="fishmug builds" />
+          <Header title="fishmug builds" signedIn={signedIn} />
           <div className="min-h-0 flex-1">{children}</div>
         </Providers>
       </body>
