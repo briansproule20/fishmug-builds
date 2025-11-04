@@ -52,7 +52,10 @@ export function NavigationMenu() {
 
           <Collapsible open={aiOpen} onOpenChange={setAiOpen}>
             <CollapsibleTrigger className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-gray-900 font-semibold transition-colors hover:bg-gray-100">
-              <span>AI</span>
+              <div className="flex items-center gap-3">
+                <Sparkles className="size-4" />
+                <span>Echo Studio</span>
+              </div>
               <ChevronDown className={`size-4 transition-transform ${aiOpen ? 'rotate-180' : ''}`} />
             </CollapsibleTrigger>
             <CollapsibleContent className="ml-4 mt-2 space-y-1">

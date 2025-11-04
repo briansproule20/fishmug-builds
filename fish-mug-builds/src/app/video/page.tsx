@@ -16,7 +16,7 @@
 
 import { isSignedIn } from '@/echo';
 import VideoGenerator from '@/components/video-generator';
-import { EchoAccount } from '@/components/echo-account-next';
+import { EchoSignIn } from '@merit-systems/echo-next-sdk/client';
 
 export default async function VideoPage() {
   const _isSignedIn = await isSignedIn();
@@ -30,7 +30,7 @@ export default async function VideoPage() {
         {/* Overlay when not signed in */}
         {!_isSignedIn && (
           <div className="absolute inset-0 backdrop-blur-[2px] bg-white/30 flex items-center justify-center rounded-xl border border-gray-300">
-            <EchoAccount />
+            <EchoSignIn />
           </div>
         )}
       </div>
