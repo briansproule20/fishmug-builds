@@ -15,7 +15,7 @@ export default function AppsPage() {
           App Directory
         </h1>
         <p className="mx-auto max-w-2xl text-muted-foreground text-lg">
-          explore what I've built to spark creativity and solve problems
+          Explore what I've built to spark creativity, solve problems, and have fun:
         </p>
       </div>
 
@@ -45,33 +45,45 @@ export default function AppsPage() {
 
         <Dialog open={!!selectedApp} onOpenChange={(open) => !open && setSelectedApp(null)}>
           <DialogContent className="max-w-2xl">
-            <DialogHeader>
-              <DialogTitle className="flex items-center gap-3 text-2xl">
+            <DialogHeader className="text-left">
+              <DialogTitle className="flex items-center gap-3 text-xl sm:text-2xl">
                 {selectedApp?.icon}
                 {selectedApp?.title || selectedApp?.name}
               </DialogTitle>
-              <DialogDescription className="text-base">
+              <DialogDescription className="text-sm sm:text-base text-left">
                 {selectedApp?.modalInfo?.fullDescription}
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-4">
               {selectedApp?.modalInfo?.features && (
                 <div>
-                  <h3 className="font-semibold text-foreground mb-2">Features</h3>
-                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                  <h3 className="font-semibold text-foreground mb-2 text-sm sm:text-base">Features</h3>
+                  <ul className="list-disc list-inside space-y-1 text-muted-foreground text-sm sm:text-base">
                     {selectedApp.modalInfo.features.map((feature: string, i: number) => (
                       <li key={i}>{feature}</li>
+                    ))}
+                    {selectedApp?.modalInfo?.additionalLinks?.map((link: any, i: number) => (
+                      <li key={`link-${i}`}>
+                        <a
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:text-primary/80 transition-colors underline decoration-primary/30 underline-offset-2"
+                        >
+                          {link.label}
+                        </a>
+                      </li>
                     ))}
                   </ul>
                 </div>
               )}
-              <div className="flex gap-3 pt-4">
+              <div className="flex flex-wrap gap-2 sm:gap-3 pt-4">
                 {selectedApp?.modalInfo?.liveUrl && (
                   <a
                     href={selectedApp.modalInfo.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90 transition-colors"
+                    className="flex items-center gap-2 rounded-lg bg-primary px-3 py-2 sm:px-4 text-primary-foreground hover:bg-primary/90 transition-colors text-sm"
                   >
                     <ExternalLink className="size-4" />
                     Visit Site
@@ -82,7 +94,7 @@ export default function AppsPage() {
                     href={selectedApp.modalInfo.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2 text-foreground hover:bg-secondary transition-colors"
+                    className="flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 sm:px-4 text-foreground hover:bg-secondary transition-colors text-sm"
                   >
                     <Github className="size-4" />
                     View Code
@@ -211,6 +223,26 @@ const BigCorpIncPreview = () => (
   </div>
 );
 
+const LitParlorPreview = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/10 to-accent/20 items-center justify-center">
+    <img
+      src="/app-icons/litparlor-logo.png"
+      alt="LitParlor"
+      className="size-32 object-contain"
+    />
+  </div>
+);
+
+const HistoryTutorPreview = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/10 to-accent/20 items-center justify-center">
+    <img
+      src="/app-icons/history-tutor-chat.png"
+      alt="History Tutor"
+      className="size-24 object-contain"
+    />
+  </div>
+);
+
 const featuredApps = [
   {
     title: "Trivia Wizard",
@@ -276,16 +308,44 @@ const featuredApps = [
     icon: <Video className="h-4 w-4 text-primary" />,
   },
   {
-    title: "Creative Studio",
-    description: "A complete toolkit for bringing your creative projects to life",
-    header: <Skeleton />,
-    icon: <Palette className="h-4 w-4 text-primary" />,
+    title: "LitParlor",
+    description: "Transform long-form narratives into digestible insights",
+    header: <LitParlorPreview />,
+    icon: <img src="/app-icons/litparlor.png" alt="LitParlor" className="h-4 w-4" />,
+    modalInfo: {
+      fullDescription: "Transform lengthy written content into accessible, condensed summaries. LitParlor helps you extract and understand the main points from long-form narratives quickly and efficiently.",
+      features: [
+        "AI-powered text summarization",
+        "Extract key insights from long-form content",
+        "Fast and accurate processing",
+        "Clean, intuitive interface",
+        "Support for various content types",
+      ],
+      liveUrl: "https://litparlor.com",
+      githubUrl: "https://github.com/briansproule20/lit-parlor",
+      additionalLinks: [
+        { label: "Literary Movements", url: "https://www.litparlor.com/lit-movements" },
+        { label: "Glossary of Terms", url: "https://www.litparlor.com/glossary" },
+      ],
+    },
   },
   {
-    title: "Code Assistant",
-    description: "Get help with coding challenges and solutions",
-    header: <Skeleton />,
-    icon: <Code className="h-4 w-4 text-primary" />,
+    title: "History Tutor",
+    description: "Explore historical context, varying perspectives, and how our world was shaped",
+    header: <HistoryTutorPreview />,
+    icon: <img src="/app-icons/history-tutor-chat.png" alt="History Tutor" className="h-4 w-4" />,
+    modalInfo: {
+      fullDescription: "Explore historical context, varying perspectives, and how the world around us was shaped. History Tutor by LitParlor helps you understand pivotal moments through comprehensive analysis and multiple viewpoints.",
+      features: [
+        "Interactive historical exploration",
+        "Multiple perspectives on historical events",
+        "Contextual analysis of key moments",
+        "Educational AI-powered discussions",
+        "Deep dive into world history",
+      ],
+      liveUrl: "https://historytutor.litparlor.com/",
+      githubUrl: "https://github.com/briansproule20/historytutor",
+    },
   },
   {
     title: "Quick Tools",
@@ -390,6 +450,23 @@ const allApps = [
   { name: "Games", icon: <Palette className="size-8" />, href: "#" },
   { name: "Health", icon: <Zap className="size-8" />, href: "#" },
   {
+    name: "History Tutor",
+    icon: <img src="/app-icons/history-tutor-chat.png" alt="History Tutor" className="size-8" />,
+    href: "https://historytutor.litparlor.com/",
+    modalInfo: {
+      fullDescription: "Explore historical context, varying perspectives, and how the world around us was shaped. History Tutor by LitParlor helps you understand pivotal moments through comprehensive analysis and multiple viewpoints.",
+      features: [
+        "Interactive historical exploration",
+        "Multiple perspectives on historical events",
+        "Contextual analysis of key moments",
+        "Educational AI-powered discussions",
+        "Deep dive into world history",
+      ],
+      liveUrl: "https://historytutor.litparlor.com/",
+      githubUrl: "https://github.com/briansproule20/historytutor",
+    },
+  },
+  {
     name: "Interstellar Weather Bureau",
     icon: <img src="/app-icons/IWB-favicon.png" alt="IWB" className="size-8" />,
     href: "https://iwb-one.vercel.app/",
@@ -408,6 +485,27 @@ const allApps = [
     },
   },
   { name: "Invest", icon: <Sparkles className="size-8" />, href: "#" },
+  {
+    name: "LitParlor",
+    icon: <img src="/app-icons/litparlor.png" alt="LitParlor" className="size-8" />,
+    href: "https://litparlor.com",
+    modalInfo: {
+      fullDescription: "Transform lengthy written content into accessible, condensed summaries. LitParlor helps you extract and understand the main points from long-form narratives quickly and efficiently.",
+      features: [
+        "AI-powered text summarization",
+        "Extract key insights from long-form content",
+        "Fast and accurate processing",
+        "Clean, intuitive interface",
+        "Support for various content types",
+      ],
+      liveUrl: "https://litparlor.com",
+      githubUrl: "https://github.com/briansproule20/lit-parlor",
+      additionalLinks: [
+        { label: "Literary Movements", url: "https://www.litparlor.com/lit-movements" },
+        { label: "Glossary of Terms", url: "https://www.litparlor.com/glossary" },
+      ],
+    },
+  },
   { name: "Maps", icon: <Zap className="size-8" />, href: "#" },
   { name: "Media Hub", icon: <Image className="size-8" />, href: "#" },
   { name: "Music", icon: <Sparkles className="size-8" />, href: "#" },
@@ -459,5 +557,4 @@ const allApps = [
   },
   { name: "Video Gen", icon: <Video className="size-8" />, href: "/video" },
   { name: "Videos", icon: <Video className="size-8" />, href: "#" },
-  { name: "Weather", icon: <Sparkles className="size-8" />, href: "#" },
 ];
