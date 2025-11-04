@@ -180,6 +180,16 @@ const TriviaWizardPreview = () => (
   </div>
 );
 
+const ShirtslopPreview = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/10 to-accent/20 items-center justify-center">
+    <img
+      src="/app-icons/shirtslop.png"
+      alt="Shirtslop"
+      className="size-24 object-contain"
+    />
+  </div>
+);
+
 const featuredApps = [
   {
     title: "Trivia Wizard",
@@ -221,10 +231,22 @@ const featuredApps = [
     },
   },
   {
-    title: "Image Generation",
-    description: "Bring your visual ideas to life with AI",
-    header: <Skeleton />,
-    icon: <Image className="h-4 w-4 text-primary" />,
+    title: "Shirtslop",
+    description: "From image to shirt faster than you can say SLOP",
+    header: <ShirtslopPreview />,
+    icon: <img src="/app-icons/shirtslop.png" alt="Shirtslop" className="h-4 w-4" />,
+    modalInfo: {
+      fullDescription: "The fastest way to turn your images into custom shirts. Upload or create, preview, and order—faster than you can say SLOP.",
+      features: [
+        "Lightning-fast image to shirt conversion",
+        "Real-time preview on shirt mockups",
+        "Multiple shirt styles and colors",
+        "High-quality print production",
+        "Simple ordering process",
+      ],
+      liveUrl: "https://www.shirtslop.com/",
+      githubUrl: "https://github.com/rsproule/shirtslop",
+    },
   },
   {
     title: "Video Creation",
@@ -333,7 +355,23 @@ const allApps = [
       githubUrl: "https://github.com/briansproule20/IWB",
     },
   },
-  { name: "Image Gen", icon: <Image className="size-8" />, href: "/image" },
+  {
+    name: "Shirtslop",
+    icon: <img src="/app-icons/shirtslop.png" alt="Shirtslop" className="size-8" />,
+    href: "https://www.shirtslop.com/",
+    modalInfo: {
+      fullDescription: "The fastest way to turn your images into custom shirts. Upload or create, preview, and order—faster than you can say SLOP.",
+      features: [
+        "Lightning-fast image to shirt conversion",
+        "Real-time preview on shirt mockups",
+        "Multiple shirt styles and colors",
+        "High-quality print production",
+        "Simple ordering process",
+      ],
+      liveUrl: "https://www.shirtslop.com/",
+      githubUrl: "https://github.com/rsproule/shirtslop",
+    },
+  },
   { name: "Video Gen", icon: <Video className="size-8" />, href: "/video" },
   { name: "AI Studio", icon: <Sparkles className="size-8" />, href: "/ai" },
   { name: "Code Tools", icon: <Code className="size-8" />, href: "#" },
