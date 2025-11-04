@@ -5,5 +5,8 @@ Checkout apps I've built to spark creativity, solve problems, and have fun.
 
 
 # Essential Infrastructure
-- Vercel (Hosting, Databases)
-- Merit Systems (Financial Stack)
+- Vercel (Hosting)
+- Supabase (Storage)
+- Merit Systems (Financial Stack for open source)
+- Merit Systems Echo (AI billing in a box)
+- Next.js, typescript, react
