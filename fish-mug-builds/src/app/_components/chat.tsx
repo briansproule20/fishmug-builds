@@ -41,20 +41,20 @@ import { Suggestion, Suggestions } from '@/components/ai-elements/suggestion';
 
 const models = [
   {
-    name: 'GPT 4o',
-    value: 'gpt-4o',
-  },
-  {
-    name: 'GPT 5',
-    value: 'gpt-5',
+    name: 'Claude Sonnet 4.5',
+    value: 'claude-sonnet-4-5-20250929',
   },
   {
     name: 'Claude Sonnet 4',
     value: 'claude-sonnet-4-20250514',
   },
   {
-    name: 'Claude Sonnet 4.5',
-    value: 'claude-sonnet-4-5-20250929',
+    name: 'GPT 4o',
+    value: 'gpt-4o',
+  },
+  {
+    name: 'GPT 5',
+    value: 'gpt-5',
   },
 ];
 
@@ -66,7 +66,7 @@ const suggestions = [
 
 const ChatBotDemo = () => {
   const [input, setInput] = useState('');
-  const [model, setModel] = useState<string>(models[0].value);
+  const [model, setModel] = useState<string>(models[0].value); // Now defaults to Claude Sonnet 4.5
   const { messages, sendMessage, status } = useChat();
 
   const handleSubmit = (message: PromptInputMessage, e: React.FormEvent) => {

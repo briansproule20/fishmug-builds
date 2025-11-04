@@ -2,8 +2,11 @@
  * OpenAI Sora video generation handler
  */
 
-import { openai } from '@/echo';
+import { getEchoToken } from '@/echo';
 import { ERROR_MESSAGES } from '@/lib/constants';
+import OpenAI from 'openai';
+
+const BASE_URL = process.env.BASE_URL || 'https://echo.router.merit.systems/v1';
 
 /**
  * Initiates OpenAI Sora video generation
@@ -18,63 +21,71 @@ export async function handleSoraGenerate(
   try {
     console.log('[Sora Gen] Starting video generation:', { prompt, model, durationSeconds });
 
-    // Build the API request body
-    const requestBody: Record<string, unknown> = {
-      model,
+    const apiKey = await getEchoToken();
+    if (!apiKey) {
+      return Response.json(
+        { error: 'API key not configured' },
+        { status: 500 }
+      );
+    }
+
+    // Create OpenAI client pointing to Echo router
+    const openai = new OpenAI({
+      apiKey,
+      baseURL: BASE_URL,
+    });
+
+    const createParams: OpenAI.VideoCreateParams = {
+      model: model as OpenAI.VideoModel,
       prompt,
-      duration: durationSeconds.toString(), // API expects "4", "8", or "12"
-      // Default resolution is 720x1280 (portrait)
+      seconds: durationSeconds.toString() as "4" | "8" | "12",
+      size: '1280x720', // Default landscape
     };
 
-    // Add input reference image if provided
+    // Add image reference if provided
     if (image) {
-      // Handle both data URLs and plain base64
-      const base64Data = image.startsWith('data:')
-        ? image.split(',')[1]
-        : image;
+      try {
+        const base64Data = image.startsWith('data:')
+          ? image.split(',')[1]
+          : image;
 
-      requestBody.input_reference = base64Data;
+        const buffer = Buffer.from(base64Data, 'base64');
+        const blob = new Blob([buffer], { type: 'image/jpeg' });
+        const file = new File([blob], 'reference.jpg', { type: 'image/jpeg' });
+
+        createParams.input_reference = file;
+      } catch (error) {
+        console.error('[Sora Gen] Error processing input image:', error);
+      }
     }
 
-    console.log('[Sora Gen] Calling OpenAI API with params:', {
-      model: requestBody.model,
+    console.log('[Sora Gen] Calling OpenAI SDK with params:', {
+      model: createParams.model,
       promptLength: prompt.length,
-      duration: requestBody.duration,
-      hasImage: !!requestBody.input_reference,
+      seconds: createParams.seconds,
+      hasImage: !!createParams.input_reference,
     });
 
-    // Use Echo's OpenAI client to make the request
-    const response = await fetch('https://api.openai.com/v1/video/generations', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-      },
-      body: JSON.stringify(requestBody),
-    });
+    const video = await openai.videos.create(createParams);
+    console.log('[Sora Gen] Video created:', video.id);
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('[Sora Gen] API Error:', errorText);
-      throw new Error(`OpenAI API error: ${response.status} ${errorText}`);
-    }
-
-    const operation = await response.json();
-    console.log('[Sora Gen] Operation created:', operation);
-
-    // Return the operation in a format compatible with the video operations system
-    return Response.json({
-      name: operation.id || `sora-${Date.now()}`,
-      done: false,
-      operation: operation,
-    });
+    return Response.json(video);
   } catch (error) {
     console.error('[Sora Gen] ERROR:', error);
-    console.error('[Sora Gen] Error details:', {
-      message: error instanceof Error ? error.message : 'Unknown error',
-      stack: error instanceof Error ? error.stack : undefined,
-      raw: error,
-    });
+
+    if (error instanceof OpenAI.APIError) {
+      console.error('[Sora Gen] API Error details:', {
+        status: error.status,
+        message: error.message,
+        error: error.error,
+      });
+
+      return Response.json(
+        { error: error.message },
+        { status: error.status || 500 }
+      );
+    }
+
     return Response.json(
       {
         error:
@@ -96,30 +107,33 @@ export async function checkSoraOperationStatus(
   try {
     console.log('[Sora Status] Checking operation:', operationId);
 
-    const response = await fetch(`https://api.openai.com/v1/video/generations/${operationId}`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-      },
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('[Sora Status] API Error:', errorText);
-      throw new Error(`OpenAI API error: ${response.status} ${errorText}`);
+    const apiKey = await getEchoToken();
+    if (!apiKey) {
+      return Response.json(
+        { error: 'API key not configured' },
+        { status: 500 }
+      );
     }
 
-    const operation = await response.json();
-    console.log('[Sora Status] Operation status:', operation);
-
-    // Transform to compatible format
-    return Response.json({
-      name: operation.id,
-      done: operation.status === 'completed',
-      operation: operation,
+    const openai = new OpenAI({
+      apiKey,
+      baseURL: BASE_URL,
     });
+
+    const video = await openai.videos.retrieve(operationId);
+    console.log('[Sora Status] Video status:', video.status);
+
+    return Response.json(video);
   } catch (error) {
     console.error('[Sora Status] Error checking operation status:', error);
+
+    if (error instanceof OpenAI.APIError) {
+      return Response.json(
+        { error: error.message },
+        { status: error.status || 500 }
+      );
+    }
+
     return Response.json(
       {
         status: 'failed',

@@ -1,5 +1,5 @@
 import { convertToModelMessages, streamText, type UIMessage } from 'ai';
-import { openai } from '@/echo';
+import { openai, anthropic } from '@/echo';
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
@@ -41,8 +41,11 @@ export async function POST(req: Request) {
       );
     }
 
+    // Route to correct provider based on model
+    const provider = model.startsWith('claude-') ? anthropic : openai;
+
     const result = streamText({
-      model: openai(model),
+      model: provider(model),
       messages: convertToModelMessages(messages),
     });
 

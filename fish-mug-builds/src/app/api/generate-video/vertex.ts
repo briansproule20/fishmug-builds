@@ -53,6 +53,7 @@ export async function handleGeminiGenerate(
         enhancePrompt: true,
         personGeneration: 'allow_all',
         generateAudio,
+        outputGcsUri: 'template-v1',
       },
     };
 
