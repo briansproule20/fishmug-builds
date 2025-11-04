@@ -46,12 +46,10 @@ const Header: FC<HeaderProps> = ({
             </Link>
           </div>
 
-          {signedIn && (
-            <nav className="flex items-center space-x-2">
-              {isAISection && <EchoAccount />}
-              <NavigationMenu />
-            </nav>
-          )}
+          <nav className="flex items-center space-x-2">
+            {isAISection && <EchoAccount />}
+            <NavigationMenu />
+          </nav>
         </div>
       </div>
     </header>
