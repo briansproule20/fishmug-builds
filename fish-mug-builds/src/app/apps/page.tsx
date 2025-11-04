@@ -243,6 +243,16 @@ const HistoryTutorPreview = () => (
   </div>
 );
 
+const CaseStudyPreview = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/10 to-accent/20 items-center justify-center">
+    <img
+      src="/app-icons/casestudy-favicon.png"
+      alt="Case Study"
+      className="size-24 object-contain"
+    />
+  </div>
+);
+
 const featuredApps = [
   {
     title: "Trivia Wizard",
@@ -302,10 +312,23 @@ const featuredApps = [
     },
   },
   {
-    title: "Video Creation",
-    description: "Transform prompts and images into motion",
-    header: <Skeleton />,
-    icon: <Video className="h-4 w-4 text-primary" />,
+    title: "Case Study",
+    description: "AI-powered law school companion for mastering case law and legal concepts",
+    header: <CaseStudyPreview />,
+    icon: <img src="/app-icons/casestudy-favicon.png" alt="Case Study" className="h-4 w-4" />,
+    modalInfo: {
+      fullDescription: "AI-powered law school companion that helps you master case law and legal concepts through interactive learning. Upload your materials or access millions of legal cases to enhance your legal education.",
+      features: [
+        "Document analysis with AI-powered case briefs",
+        "Practice quizzes with instant feedback",
+        "Auto-generated flashcards for legal concepts",
+        "Case library with millions of legal cases",
+        "Issue spotting and IRAC framework practice",
+        "Legal chat powered by Claude AI",
+      ],
+      liveUrl: "https://case-study-rho-plum.vercel.app/",
+      githubUrl: "https://github.com/briansproule20/case-study",
+    },
   },
   {
     title: "LitParlor",
@@ -415,7 +438,6 @@ const moreApps = [
 
 const allApps = [
   { name: "AI Studio", icon: <Sparkles className="size-8" />, href: "/ai" },
-  { name: "Banking", icon: <Code className="size-8" />, href: "#" },
   {
     name: "Big Corp Inc",
     icon: <img src="/app-icons/bigcorpinc.png" alt="Big Corp Inc" className="size-8" />,
@@ -436,6 +458,24 @@ const allApps = [
   },
   { name: "Books", icon: <FolderOpen className="size-8" />, href: "#" },
   { name: "Calendar", icon: <Code className="size-8" />, href: "#" },
+  {
+    name: "Case Study",
+    icon: <img src="/app-icons/casestudy-favicon.png" alt="Case Study" className="size-8" />,
+    href: "https://case-study-rho-plum.vercel.app/",
+    modalInfo: {
+      fullDescription: "AI-powered law school companion that helps you master case law and legal concepts through interactive learning. Upload your materials or access millions of legal cases to enhance your legal education.",
+      features: [
+        "Document analysis with AI-powered case briefs",
+        "Practice quizzes with instant feedback",
+        "Auto-generated flashcards for legal concepts",
+        "Case library with millions of legal cases",
+        "Issue spotting and IRAC framework practice",
+        "Legal chat powered by Claude AI",
+      ],
+      liveUrl: "https://case-study-rho-plum.vercel.app/",
+      githubUrl: "https://github.com/briansproule20/case-study",
+    },
+  },
   { name: "Code Tools", icon: <Code className="size-8" />, href: "#" },
   { name: "Collab", icon: <MessageSquare className="size-8" />, href: "#" },
   { name: "Contacts", icon: <FolderOpen className="size-8" />, href: "#" },
@@ -537,7 +577,6 @@ const allApps = [
   { name: "Social", icon: <MessageSquare className="size-8" />, href: "#" },
   { name: "Tasks", icon: <Zap className="size-8" />, href: "#" },
   { name: "Text Editor", icon: <FolderOpen className="size-8" />, href: "#" },
-  { name: "Travel", icon: <Sparkles className="size-8" />, href: "#" },
   {
     name: "Trivia Wizard",
     icon: <img src="/app-icons/trivia-wizard.png" alt="Trivia Wizard" className="size-8" />,
