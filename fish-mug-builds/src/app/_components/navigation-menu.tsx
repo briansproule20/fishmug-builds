@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, Home, Video, Image as ImageIcon, MessageSquare, ChevronDown, Sparkles } from 'lucide-react';
+import { Menu, Home, Video, Image as ImageIcon, MessageSquare, ChevronDown, Sparkles, FolderOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -48,6 +48,15 @@ export function NavigationMenu() {
           >
             <Home className="size-4" />
             <span>Home</span>
+          </Link>
+
+          <Link
+            href="/apps"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-900 font-semibold transition-colors hover:bg-gray-100"
+          >
+            <FolderOpen className="size-4" />
+            <span>Apps</span>
           </Link>
 
           <Collapsible open={aiOpen} onOpenChange={setAiOpen}>
