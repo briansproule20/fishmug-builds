@@ -48,7 +48,7 @@ export default function AppsPage() {
             <DialogHeader>
               <DialogTitle className="flex items-center gap-3 text-2xl">
                 {selectedApp?.icon}
-                {selectedApp?.title}
+                {selectedApp?.title || selectedApp?.name}
               </DialogTitle>
               <DialogDescription className="text-base">
                 {selectedApp?.modalInfo?.fullDescription}
@@ -110,19 +110,19 @@ export default function AppsPage() {
       {/* Full App List */}
       <div>
         <h2 className="mb-8 font-semibold text-2xl text-foreground">All Apps</h2>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {allApps.map((app, i) => (
             app.modalInfo ? (
               <div
                 key={i}
                 onClick={() => setSelectedApp(app)}
-                className="group flex items-center gap-3 rounded-lg border border-border bg-card p-4 transition-all hover:border-primary hover:shadow-md cursor-pointer"
+                className="group flex items-center gap-4 rounded-lg border border-border bg-card p-4 transition-all hover:border-primary hover:shadow-md cursor-pointer"
               >
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-secondary text-primary">
+                <div className="flex size-14 shrink-0 items-center justify-center rounded-md bg-secondary text-primary">
                   {app.icon}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="truncate font-medium text-foreground text-sm group-hover:text-primary transition-colors">
+                  <h3 className="font-medium text-foreground text-sm leading-tight group-hover:text-primary transition-colors">
                     {app.name}
                   </h3>
                 </div>
@@ -131,13 +131,13 @@ export default function AppsPage() {
               <a
                 key={i}
                 href={app.href}
-                className="group flex items-center gap-3 rounded-lg border border-border bg-card p-4 transition-all hover:border-primary hover:shadow-md"
+                className="group flex items-center gap-4 rounded-lg border border-border bg-card p-4 transition-all hover:border-primary hover:shadow-md"
               >
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-secondary text-primary">
+                <div className="flex size-14 shrink-0 items-center justify-center rounded-md bg-secondary text-primary">
                   {app.icon}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="truncate font-medium text-foreground text-sm group-hover:text-primary transition-colors">
+                  <h3 className="font-medium text-foreground text-sm leading-tight group-hover:text-primary transition-colors">
                     {app.name}
                   </h3>
                 </div>
@@ -185,7 +185,7 @@ const featuredApps = [
     title: "Trivia Wizard",
     description: "AI-powered trivia with ranks, profiles, and daily challenges",
     header: <TriviaWizardPreview />,
-    icon: <Sparkles className="h-4 w-4 text-primary" />,
+    icon: <img src="/app-icons/trivia-wizard.png" alt="Trivia Wizard" className="h-4 w-4" />,
     modalInfo: {
       fullDescription: "An AI-powered trivia game with ranking systems, player profiles, achievements, and daily challenges to test your knowledge.",
       features: [
@@ -200,10 +200,25 @@ const featuredApps = [
     },
   },
   {
-    title: "Echo Chat",
-    description: "Have conversations, brainstorm ideas, write together",
-    header: <Skeleton />,
-    icon: <MessageSquare className="h-4 w-4 text-primary" />,
+    title: "Interstellar Weather Bureau",
+    description: "300 years monitoring the cosmos across 400 million star systems",
+    header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/10 to-accent/20 items-center justify-center">
+      <img src="/app-icons/IWB-favicon.png" alt="Interstellar Weather Bureau" className="size-24 object-contain" />
+    </div>,
+    icon: <img src="/app-icons/IWB-favicon.png" alt="IWB" className="h-4 w-4" />,
+    modalInfo: {
+      fullDescription: "For 300 years across 400 million star systems, your weatherman has faithfully monitored the cosmos. Featuring the legendary Aetherscope visualization engine, track real-time conditions from Mercury's scorched surface to the outer solar system—powered by NASA and Open-Meteo APIs.",
+      features: [
+        "Real-time solar system weather data (NASA API)",
+        "Earth weather forecasting (Open-Meteo API)",
+        "Aetherscope cosmos visualization engine",
+        "Spacecraft tracking across the void",
+        "Planetary conditions monitoring",
+        "300 years of service, 400 million star systems",
+      ],
+      liveUrl: "https://iwb-one.vercel.app/",
+      githubUrl: "https://github.com/briansproule20/IWB",
+    },
   },
   {
     title: "Image Generation",
@@ -234,12 +249,6 @@ const featuredApps = [
     description: "Handy utilities for everyday tasks",
     header: <Skeleton />,
     icon: <Zap className="h-4 w-4 text-primary" />,
-  },
-  {
-    title: "Echo Studio Suite",
-    description: "Explore the full range of AI-powered creative tools and templates",
-    header: <Skeleton />,
-    icon: <Sparkles className="h-4 w-4 text-primary" />,
   },
 ];
 
@@ -291,7 +300,7 @@ const moreApps = [
 const allApps = [
   {
     name: "Trivia Wizard",
-    icon: <img src="/app-icons/trivia-wizard.png" alt="Trivia Wizard" className="size-5" />,
+    icon: <img src="/app-icons/trivia-wizard.png" alt="Trivia Wizard" className="size-8" />,
     href: "https://www.trivwiz.com",
     modalInfo: {
       fullDescription: "An AI-powered trivia game with ranking systems, player profiles, achievements, and daily challenges to test your knowledge.",
@@ -306,43 +315,60 @@ const allApps = [
       githubUrl: "https://github.com/briansproule20/echo-trivia",
     },
   },
-  { name: "Echo Chat", icon: <MessageSquare className="size-5" />, href: "/chat" },
-  { name: "Image Gen", icon: <Image className="size-5" />, href: "/image" },
-  { name: "Video Gen", icon: <Video className="size-5" />, href: "/video" },
-  { name: "AI Studio", icon: <Sparkles className="size-5" />, href: "/ai" },
-  { name: "Code Tools", icon: <Code className="size-5" />, href: "#" },
-  { name: "Design Kit", icon: <Palette className="size-5" />, href: "#" },
-  { name: "Quick Tools", icon: <Zap className="size-5" />, href: "#" },
-  { name: "Text Editor", icon: <FolderOpen className="size-5" />, href: "#" },
-  { name: "Media Hub", icon: <Image className="size-5" />, href: "#" },
-  { name: "Analytics", icon: <Sparkles className="size-5" />, href: "#" },
-  { name: "Collab", icon: <MessageSquare className="size-5" />, href: "#" },
-  { name: "Tasks", icon: <Zap className="size-5" />, href: "#" },
-  { name: "Notes", icon: <FolderOpen className="size-5" />, href: "#" },
-  { name: "Calendar", icon: <Code className="size-5" />, href: "#" },
-  { name: "Files", icon: <FolderOpen className="size-5" />, href: "#" },
-  { name: "Music", icon: <Sparkles className="size-5" />, href: "#" },
-  { name: "Photos", icon: <Image className="size-5" />, href: "#" },
-  { name: "Videos", icon: <Video className="size-5" />, href: "#" },
-  { name: "Docs", icon: <FolderOpen className="size-5" />, href: "#" },
-  { name: "Sheets", icon: <Code className="size-5" />, href: "#" },
-  { name: "Slides", icon: <Palette className="size-5" />, href: "#" },
-  { name: "Forms", icon: <MessageSquare className="size-5" />, href: "#" },
-  { name: "Email", icon: <MessageSquare className="size-5" />, href: "#" },
-  { name: "Contacts", icon: <FolderOpen className="size-5" />, href: "#" },
-  { name: "Maps", icon: <Zap className="size-5" />, href: "#" },
-  { name: "Weather", icon: <Sparkles className="size-5" />, href: "#" },
-  { name: "News", icon: <FolderOpen className="size-5" />, href: "#" },
-  { name: "Podcasts", icon: <Sparkles className="size-5" />, href: "#" },
-  { name: "Books", icon: <FolderOpen className="size-5" />, href: "#" },
-  { name: "Shopping", icon: <Zap className="size-5" />, href: "#" },
-  { name: "Travel", icon: <Sparkles className="size-5" />, href: "#" },
-  { name: "Health", icon: <Zap className="size-5" />, href: "#" },
-  { name: "Fitness", icon: <Zap className="size-5" />, href: "#" },
-  { name: "Finance", icon: <Code className="size-5" />, href: "#" },
-  { name: "Banking", icon: <Code className="size-5" />, href: "#" },
-  { name: "Invest", icon: <Sparkles className="size-5" />, href: "#" },
-  { name: "Crypto", icon: <Zap className="size-5" />, href: "#" },
-  { name: "Games", icon: <Palette className="size-5" />, href: "#" },
-  { name: "Social", icon: <MessageSquare className="size-5" />, href: "#" },
+  {
+    name: "Interstellar Weather Bureau",
+    icon: <img src="/app-icons/IWB-favicon.png" alt="IWB" className="size-8" />,
+    href: "https://iwb-one.vercel.app/",
+    modalInfo: {
+      fullDescription: "For 300 years across 400 million star systems, your weatherman has faithfully monitored the cosmos. Featuring the legendary Aetherscope visualization engine, track real-time conditions from Mercury's scorched surface to the outer solar system—powered by NASA and Open-Meteo APIs.",
+      features: [
+        "Real-time solar system weather data (NASA API)",
+        "Earth weather forecasting (Open-Meteo API)",
+        "Aetherscope cosmos visualization engine",
+        "Spacecraft tracking across the void",
+        "Planetary conditions monitoring",
+        "300 years of service, 400 million star systems",
+      ],
+      liveUrl: "https://iwb-one.vercel.app/",
+      githubUrl: "https://github.com/briansproule20/IWB",
+    },
+  },
+  { name: "Image Gen", icon: <Image className="size-8" />, href: "/image" },
+  { name: "Video Gen", icon: <Video className="size-8" />, href: "/video" },
+  { name: "AI Studio", icon: <Sparkles className="size-8" />, href: "/ai" },
+  { name: "Code Tools", icon: <Code className="size-8" />, href: "#" },
+  { name: "Design Kit", icon: <Palette className="size-8" />, href: "#" },
+  { name: "Quick Tools", icon: <Zap className="size-8" />, href: "#" },
+  { name: "Text Editor", icon: <FolderOpen className="size-8" />, href: "#" },
+  { name: "Media Hub", icon: <Image className="size-8" />, href: "#" },
+  { name: "Analytics", icon: <Sparkles className="size-8" />, href: "#" },
+  { name: "Collab", icon: <MessageSquare className="size-8" />, href: "#" },
+  { name: "Tasks", icon: <Zap className="size-8" />, href: "#" },
+  { name: "Notes", icon: <FolderOpen className="size-8" />, href: "#" },
+  { name: "Calendar", icon: <Code className="size-8" />, href: "#" },
+  { name: "Files", icon: <FolderOpen className="size-8" />, href: "#" },
+  { name: "Music", icon: <Sparkles className="size-8" />, href: "#" },
+  { name: "Photos", icon: <Image className="size-8" />, href: "#" },
+  { name: "Videos", icon: <Video className="size-8" />, href: "#" },
+  { name: "Docs", icon: <FolderOpen className="size-8" />, href: "#" },
+  { name: "Sheets", icon: <Code className="size-8" />, href: "#" },
+  { name: "Slides", icon: <Palette className="size-8" />, href: "#" },
+  { name: "Forms", icon: <MessageSquare className="size-8" />, href: "#" },
+  { name: "Email", icon: <MessageSquare className="size-8" />, href: "#" },
+  { name: "Contacts", icon: <FolderOpen className="size-8" />, href: "#" },
+  { name: "Maps", icon: <Zap className="size-8" />, href: "#" },
+  { name: "Weather", icon: <Sparkles className="size-8" />, href: "#" },
+  { name: "News", icon: <FolderOpen className="size-8" />, href: "#" },
+  { name: "Podcasts", icon: <Sparkles className="size-8" />, href: "#" },
+  { name: "Books", icon: <FolderOpen className="size-8" />, href: "#" },
+  { name: "Shopping", icon: <Zap className="size-8" />, href: "#" },
+  { name: "Travel", icon: <Sparkles className="size-8" />, href: "#" },
+  { name: "Health", icon: <Zap className="size-8" />, href: "#" },
+  { name: "Fitness", icon: <Zap className="size-8" />, href: "#" },
+  { name: "Finance", icon: <Code className="size-8" />, href: "#" },
+  { name: "Banking", icon: <Code className="size-8" />, href: "#" },
+  { name: "Invest", icon: <Sparkles className="size-8" />, href: "#" },
+  { name: "Crypto", icon: <Zap className="size-8" />, href: "#" },
+  { name: "Games", icon: <Palette className="size-8" />, href: "#" },
+  { name: "Social", icon: <MessageSquare className="size-8" />, href: "#" },
 ];
