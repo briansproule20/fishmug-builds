@@ -95,14 +95,22 @@ export default function AppsPage() {
 
         <BentoGrid>
           {moreApps.map((item, i) => (
-            <BentoGridItem
+            <div
               key={i}
-              title={item.title}
-              description={item.description}
-              header={item.header}
-              icon={item.icon}
-              className={i === 3 || i === 6 ? "md:col-span-2" : ""}
-            />
+              onClick={() => item.modalInfo && setSelectedApp(item)}
+              className={cn(
+                i === 3 || i === 6 ? "md:col-span-2" : "",
+                item.modalInfo && "cursor-pointer"
+              )}
+            >
+              <BentoGridItem
+                title={item.title}
+                description={item.description}
+                header={item.header}
+                icon={item.icon}
+                className="h-full"
+              />
+            </div>
           ))}
         </BentoGrid>
       </div>
@@ -187,6 +195,19 @@ const ShirtslopPreview = () => (
       alt="Shirtslop"
       className="size-24 object-contain"
     />
+  </div>
+);
+
+const BigCorpIncPreview = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/10 to-accent/20 items-center justify-center flex-col gap-3">
+    <img
+      src="/app-icons/bigcorpinc.png"
+      alt="Big Corp Inc"
+      className="size-16 object-contain"
+    />
+    <p className="font-semibold text-foreground text-xs text-center px-4">
+      Moving Forward, Together, Towards More Forward™
+    </p>
   </div>
 );
 
@@ -306,10 +327,23 @@ const moreApps = [
     icon: <Image className="h-4 w-4 text-primary" />,
   },
   {
-    title: "Analytics",
-    description: "Track and understand your data",
-    header: <Skeleton />,
-    icon: <Sparkles className="h-4 w-4 text-primary" />,
+    title: "Big Corp Inc",
+    description: "Business is our Business™—leveraging synergy to synergize leverage",
+    header: <BigCorpIncPreview />,
+    icon: <img src="/app-icons/bigcorpinc.png" alt="Big Corp Inc" className="h-4 w-4" />,
+    modalInfo: {
+      fullDescription: "Big Corp Inc: where business is our business. We leverage synergy to synergize leverage, monetize paradigms, and empower dynamic deliverables through cutting-edge buzzword integration. Moving Forward, Together, Towards More Forward™",
+      features: [
+        "Synergy-focused services that synergize leverage",
+        "Scalable paradigm ecosystem for dynamic deliverables",
+        "Cross-functional innovation matrix alignment",
+        "Corporate-branded apparel solutions for enterprise stakeholders",
+        "Cutting-edge buzzword integration technology",
+        "Strategic forward-movement initiatives",
+      ],
+      liveUrl: "https://www.bigcorpinc.company/",
+      githubUrl: "https://github.com/briansproule20/big-corp-inc",
+    },
   },
   {
     title: "Collaboration Tools",
@@ -320,23 +354,41 @@ const moreApps = [
 ];
 
 const allApps = [
+  { name: "AI Studio", icon: <Sparkles className="size-8" />, href: "/ai" },
+  { name: "Banking", icon: <Code className="size-8" />, href: "#" },
   {
-    name: "Trivia Wizard",
-    icon: <img src="/app-icons/trivia-wizard.png" alt="Trivia Wizard" className="size-8" />,
-    href: "https://www.trivwiz.com",
+    name: "Big Corp Inc",
+    icon: <img src="/app-icons/bigcorpinc.png" alt="Big Corp Inc" className="size-8" />,
+    href: "https://www.bigcorpinc.company/",
     modalInfo: {
-      fullDescription: "An AI-powered trivia game with ranking systems, player profiles, achievements, and daily challenges to test your knowledge.",
+      fullDescription: "Big Corp Inc: where business is our business. We leverage synergy to synergize leverage, monetize paradigms, and empower dynamic deliverables through cutting-edge buzzword integration. Moving Forward, Together, Towards More Forward™",
       features: [
-        "AI-generated trivia questions",
-        "Trivia ranks and leaderboards",
-        "Player profiles with achievements",
-        "Daily challenge mode",
-        "Multiple difficulty levels",
+        "Synergy-focused services that synergize leverage",
+        "Scalable paradigm ecosystem for dynamic deliverables",
+        "Cross-functional innovation matrix alignment",
+        "Corporate-branded apparel solutions for enterprise stakeholders",
+        "Cutting-edge buzzword integration technology",
+        "Strategic forward-movement initiatives",
       ],
-      liveUrl: "https://www.trivwiz.com",
-      githubUrl: "https://github.com/briansproule20/echo-trivia",
+      liveUrl: "https://www.bigcorpinc.company/",
+      githubUrl: "https://github.com/briansproule20/big-corp-inc",
     },
   },
+  { name: "Books", icon: <FolderOpen className="size-8" />, href: "#" },
+  { name: "Calendar", icon: <Code className="size-8" />, href: "#" },
+  { name: "Code Tools", icon: <Code className="size-8" />, href: "#" },
+  { name: "Collab", icon: <MessageSquare className="size-8" />, href: "#" },
+  { name: "Contacts", icon: <FolderOpen className="size-8" />, href: "#" },
+  { name: "Crypto", icon: <Zap className="size-8" />, href: "#" },
+  { name: "Design Kit", icon: <Palette className="size-8" />, href: "#" },
+  { name: "Docs", icon: <FolderOpen className="size-8" />, href: "#" },
+  { name: "Email", icon: <MessageSquare className="size-8" />, href: "#" },
+  { name: "Files", icon: <FolderOpen className="size-8" />, href: "#" },
+  { name: "Finance", icon: <Code className="size-8" />, href: "#" },
+  { name: "Fitness", icon: <Zap className="size-8" />, href: "#" },
+  { name: "Forms", icon: <MessageSquare className="size-8" />, href: "#" },
+  { name: "Games", icon: <Palette className="size-8" />, href: "#" },
+  { name: "Health", icon: <Zap className="size-8" />, href: "#" },
   {
     name: "Interstellar Weather Bureau",
     icon: <img src="/app-icons/IWB-favicon.png" alt="IWB" className="size-8" />,
@@ -355,6 +407,16 @@ const allApps = [
       githubUrl: "https://github.com/briansproule20/IWB",
     },
   },
+  { name: "Invest", icon: <Sparkles className="size-8" />, href: "#" },
+  { name: "Maps", icon: <Zap className="size-8" />, href: "#" },
+  { name: "Media Hub", icon: <Image className="size-8" />, href: "#" },
+  { name: "Music", icon: <Sparkles className="size-8" />, href: "#" },
+  { name: "News", icon: <FolderOpen className="size-8" />, href: "#" },
+  { name: "Notes", icon: <FolderOpen className="size-8" />, href: "#" },
+  { name: "Photos", icon: <Image className="size-8" />, href: "#" },
+  { name: "Podcasts", icon: <Sparkles className="size-8" />, href: "#" },
+  { name: "Quick Tools", icon: <Zap className="size-8" />, href: "#" },
+  { name: "Sheets", icon: <Code className="size-8" />, href: "#" },
   {
     name: "Shirtslop",
     icon: <img src="/app-icons/shirtslop.png" alt="Shirtslop" className="size-8" />,
@@ -372,41 +434,30 @@ const allApps = [
       githubUrl: "https://github.com/rsproule/shirtslop",
     },
   },
-  { name: "Video Gen", icon: <Video className="size-8" />, href: "/video" },
-  { name: "AI Studio", icon: <Sparkles className="size-8" />, href: "/ai" },
-  { name: "Code Tools", icon: <Code className="size-8" />, href: "#" },
-  { name: "Design Kit", icon: <Palette className="size-8" />, href: "#" },
-  { name: "Quick Tools", icon: <Zap className="size-8" />, href: "#" },
-  { name: "Text Editor", icon: <FolderOpen className="size-8" />, href: "#" },
-  { name: "Media Hub", icon: <Image className="size-8" />, href: "#" },
-  { name: "Analytics", icon: <Sparkles className="size-8" />, href: "#" },
-  { name: "Collab", icon: <MessageSquare className="size-8" />, href: "#" },
-  { name: "Tasks", icon: <Zap className="size-8" />, href: "#" },
-  { name: "Notes", icon: <FolderOpen className="size-8" />, href: "#" },
-  { name: "Calendar", icon: <Code className="size-8" />, href: "#" },
-  { name: "Files", icon: <FolderOpen className="size-8" />, href: "#" },
-  { name: "Music", icon: <Sparkles className="size-8" />, href: "#" },
-  { name: "Photos", icon: <Image className="size-8" />, href: "#" },
-  { name: "Videos", icon: <Video className="size-8" />, href: "#" },
-  { name: "Docs", icon: <FolderOpen className="size-8" />, href: "#" },
-  { name: "Sheets", icon: <Code className="size-8" />, href: "#" },
-  { name: "Slides", icon: <Palette className="size-8" />, href: "#" },
-  { name: "Forms", icon: <MessageSquare className="size-8" />, href: "#" },
-  { name: "Email", icon: <MessageSquare className="size-8" />, href: "#" },
-  { name: "Contacts", icon: <FolderOpen className="size-8" />, href: "#" },
-  { name: "Maps", icon: <Zap className="size-8" />, href: "#" },
-  { name: "Weather", icon: <Sparkles className="size-8" />, href: "#" },
-  { name: "News", icon: <FolderOpen className="size-8" />, href: "#" },
-  { name: "Podcasts", icon: <Sparkles className="size-8" />, href: "#" },
-  { name: "Books", icon: <FolderOpen className="size-8" />, href: "#" },
   { name: "Shopping", icon: <Zap className="size-8" />, href: "#" },
-  { name: "Travel", icon: <Sparkles className="size-8" />, href: "#" },
-  { name: "Health", icon: <Zap className="size-8" />, href: "#" },
-  { name: "Fitness", icon: <Zap className="size-8" />, href: "#" },
-  { name: "Finance", icon: <Code className="size-8" />, href: "#" },
-  { name: "Banking", icon: <Code className="size-8" />, href: "#" },
-  { name: "Invest", icon: <Sparkles className="size-8" />, href: "#" },
-  { name: "Crypto", icon: <Zap className="size-8" />, href: "#" },
-  { name: "Games", icon: <Palette className="size-8" />, href: "#" },
+  { name: "Slides", icon: <Palette className="size-8" />, href: "#" },
   { name: "Social", icon: <MessageSquare className="size-8" />, href: "#" },
+  { name: "Tasks", icon: <Zap className="size-8" />, href: "#" },
+  { name: "Text Editor", icon: <FolderOpen className="size-8" />, href: "#" },
+  { name: "Travel", icon: <Sparkles className="size-8" />, href: "#" },
+  {
+    name: "Trivia Wizard",
+    icon: <img src="/app-icons/trivia-wizard.png" alt="Trivia Wizard" className="size-8" />,
+    href: "https://www.trivwiz.com",
+    modalInfo: {
+      fullDescription: "An AI-powered trivia game with ranking systems, player profiles, achievements, and daily challenges to test your knowledge.",
+      features: [
+        "AI-generated trivia questions",
+        "Trivia ranks and leaderboards",
+        "Player profiles with achievements",
+        "Daily challenge mode",
+        "Multiple difficulty levels",
+      ],
+      liveUrl: "https://www.trivwiz.com",
+      githubUrl: "https://github.com/briansproule20/echo-trivia",
+    },
+  },
+  { name: "Video Gen", icon: <Video className="size-8" />, href: "/video" },
+  { name: "Videos", icon: <Video className="size-8" />, href: "#" },
+  { name: "Weather", icon: <Sparkles className="size-8" />, href: "#" },
 ];
