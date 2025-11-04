@@ -1,8 +1,12 @@
-import { FolderOpen, Sparkles, Image, Video, MessageSquare, Palette, Code, Zap } from 'lucide-react';
+'use client';
+import { FolderOpen, Sparkles, Image, Video, MessageSquare, Palette, Code, Zap, X, ExternalLink, Github } from 'lucide-react';
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
 import { cn } from '@/lib/utils';
+import { useState } from 'react';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 export default function AppsPage() {
+  const [selectedApp, setSelectedApp] = useState<any>(null);
   return (
     <div className="container mx-auto px-4 py-16">
       {/* Header */}
@@ -20,16 +24,74 @@ export default function AppsPage() {
         <h2 className="mb-8 font-semibold text-2xl text-foreground">Featured Apps</h2>
         <BentoGrid className="mb-4">
           {featuredApps.map((item, i) => (
-            <BentoGridItem
+            <div
               key={i}
-              title={item.title}
-              description={item.description}
-              header={item.header}
-              icon={item.icon}
-              className={i === 3 || i === 6 ? "md:col-span-2" : ""}
-            />
+              onClick={() => item.modalInfo && setSelectedApp(item)}
+              className={cn(
+                i === 3 || i === 6 ? "md:col-span-2" : "",
+                item.modalInfo && "cursor-pointer"
+              )}
+            >
+              <BentoGridItem
+                title={item.title}
+                description={item.description}
+                header={item.header}
+                icon={item.icon}
+                className="h-full"
+              />
+            </div>
           ))}
         </BentoGrid>
+
+        <Dialog open={!!selectedApp} onOpenChange={(open) => !open && setSelectedApp(null)}>
+          <DialogContent className="max-w-2xl">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-3 text-2xl">
+                {selectedApp?.icon}
+                {selectedApp?.title}
+              </DialogTitle>
+              <DialogDescription className="text-base">
+                {selectedApp?.modalInfo?.fullDescription}
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-4">
+              {selectedApp?.modalInfo?.features && (
+                <div>
+                  <h3 className="font-semibold text-foreground mb-2">Features</h3>
+                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                    {selectedApp.modalInfo.features.map((feature: string, i: number) => (
+                      <li key={i}>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <div className="flex gap-3 pt-4">
+                {selectedApp?.modalInfo?.liveUrl && (
+                  <a
+                    href={selectedApp.modalInfo.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90 transition-colors"
+                  >
+                    <ExternalLink className="size-4" />
+                    Visit Site
+                  </a>
+                )}
+                {selectedApp?.modalInfo?.githubUrl && (
+                  <a
+                    href={selectedApp.modalInfo.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2 text-foreground hover:bg-secondary transition-colors"
+                  >
+                    <Github className="size-4" />
+                    View Code
+                  </a>
+                )}
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
 
         <BentoGrid>
           {moreApps.map((item, i) => (
@@ -50,20 +112,37 @@ export default function AppsPage() {
         <h2 className="mb-8 font-semibold text-2xl text-foreground">All Apps</h2>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {allApps.map((app, i) => (
-            <a
-              key={i}
-              href={app.href}
-              className="group flex items-center gap-3 rounded-lg border border-border bg-card p-4 transition-all hover:border-primary hover:shadow-md"
-            >
-              <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-secondary text-primary">
-                {app.icon}
+            app.modalInfo ? (
+              <div
+                key={i}
+                onClick={() => setSelectedApp(app)}
+                className="group flex items-center gap-3 rounded-lg border border-border bg-card p-4 transition-all hover:border-primary hover:shadow-md cursor-pointer"
+              >
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-secondary text-primary">
+                  {app.icon}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h3 className="truncate font-medium text-foreground text-sm group-hover:text-primary transition-colors">
+                    {app.name}
+                  </h3>
+                </div>
               </div>
-              <div className="min-w-0 flex-1">
-                <h3 className="truncate font-medium text-foreground text-sm group-hover:text-primary transition-colors">
-                  {app.name}
-                </h3>
-              </div>
-            </a>
+            ) : (
+              <a
+                key={i}
+                href={app.href}
+                className="group flex items-center gap-3 rounded-lg border border-border bg-card p-4 transition-all hover:border-primary hover:shadow-md"
+              >
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-secondary text-primary">
+                  {app.icon}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h3 className="truncate font-medium text-foreground text-sm group-hover:text-primary transition-colors">
+                    {app.name}
+                  </h3>
+                </div>
+              </a>
+            )
           ))}
         </div>
 
@@ -91,7 +170,35 @@ const Skeleton = () => (
   <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-secondary to-muted"></div>
 );
 
+const TriviaWizardPreview = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/10 to-accent/20 items-center justify-center">
+    <img
+      src="/app-icons/trivia-wizard.png"
+      alt="Trivia Wizard"
+      className="size-24 object-contain"
+    />
+  </div>
+);
+
 const featuredApps = [
+  {
+    title: "Trivia Wizard",
+    description: "AI-powered trivia with ranks, profiles, and daily challenges",
+    header: <TriviaWizardPreview />,
+    icon: <Sparkles className="h-4 w-4 text-primary" />,
+    modalInfo: {
+      fullDescription: "An AI-powered trivia game with ranking systems, player profiles, achievements, and daily challenges to test your knowledge.",
+      features: [
+        "AI-generated trivia questions",
+        "Trivia ranks and leaderboards",
+        "Player profiles with achievements",
+        "Daily challenge mode",
+        "Multiple difficulty levels",
+      ],
+      liveUrl: "https://www.trivwiz.com",
+      githubUrl: "https://github.com/briansproule20/echo-trivia",
+    },
+  },
   {
     title: "Echo Chat",
     description: "Have conversations, brainstorm ideas, write together",
@@ -182,6 +289,23 @@ const moreApps = [
 ];
 
 const allApps = [
+  {
+    name: "Trivia Wizard",
+    icon: <img src="/app-icons/trivia-wizard.png" alt="Trivia Wizard" className="size-5" />,
+    href: "https://www.trivwiz.com",
+    modalInfo: {
+      fullDescription: "An AI-powered trivia game with ranking systems, player profiles, achievements, and daily challenges to test your knowledge.",
+      features: [
+        "AI-generated trivia questions",
+        "Trivia ranks and leaderboards",
+        "Player profiles with achievements",
+        "Daily challenge mode",
+        "Multiple difficulty levels",
+      ],
+      liveUrl: "https://www.trivwiz.com",
+      githubUrl: "https://github.com/briansproule20/echo-trivia",
+    },
+  },
   { name: "Echo Chat", icon: <MessageSquare className="size-5" />, href: "/chat" },
   { name: "Image Gen", icon: <Image className="size-5" />, href: "/image" },
   { name: "Video Gen", icon: <Video className="size-5" />, href: "/video" },
@@ -221,5 +345,4 @@ const allApps = [
   { name: "Crypto", icon: <Zap className="size-5" />, href: "#" },
   { name: "Games", icon: <Palette className="size-5" />, href: "#" },
   { name: "Social", icon: <MessageSquare className="size-5" />, href: "#" },
-  { name: "Settings", icon: <Code className="size-5" />, href: "#" },
 ];
