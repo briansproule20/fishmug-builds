@@ -16,7 +16,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 
 export function NavigationMenu() {
   const [open, setOpen] = useState(false);
-  const [aiOpen, setAiOpen] = useState(true);
+  const [aiOpen, setAiOpen] = useState(false);
 
   const aiNavItems = [
     { href: '/ai', label: 'AI Home', icon: Sparkles },
@@ -33,18 +33,18 @@ export function NavigationMenu() {
           <span className="sr-only">Toggle menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+      <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-card">
         <SheetHeader>
           <SheetTitle>Navigation</SheetTitle>
           <SheetDescription>
-            Access different features of fishmug builds
+            ah, i used to be an adventurer like you...
           </SheetDescription>
         </SheetHeader>
         <nav className="mt-8 flex flex-col space-y-2">
           <Link
             href="/"
             onClick={() => setOpen(false)}
-            className="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-900 font-semibold transition-colors hover:bg-gray-100"
+            className="flex items-center gap-3 rounded-lg px-4 py-3 text-foreground font-semibold transition-colors hover:bg-secondary"
           >
             <Home className="size-4" />
             <span>Home</span>
@@ -53,14 +53,14 @@ export function NavigationMenu() {
           <Link
             href="/apps"
             onClick={() => setOpen(false)}
-            className="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-900 font-semibold transition-colors hover:bg-gray-100"
+            className="flex items-center gap-3 rounded-lg px-4 py-3 text-foreground font-semibold transition-colors hover:bg-secondary"
           >
             <FolderOpen className="size-4" />
             <span>Apps</span>
           </Link>
 
           <Collapsible open={aiOpen} onOpenChange={setAiOpen}>
-            <CollapsibleTrigger className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-gray-900 font-semibold transition-colors hover:bg-gray-100">
+            <CollapsibleTrigger className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-foreground font-semibold transition-colors hover:bg-secondary">
               <div className="flex items-center gap-3">
                 <Sparkles className="size-4" />
                 <span>Echo Studio</span>
@@ -73,7 +73,7 @@ export function NavigationMenu() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 rounded-lg px-4 py-2.5 text-gray-700 transition-colors hover:bg-gray-100"
+                  className="flex items-center gap-3 rounded-lg px-4 py-2.5 text-muted-foreground transition-colors hover:bg-secondary"
                 >
                   <item.icon className="size-4" />
                   <span className="text-sm">{item.label}</span>

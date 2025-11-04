@@ -24,8 +24,8 @@ export default async function Home() {
       <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2 lg:grid-cols-3">
         <Card className="flex flex-col transition-all hover:shadow-lg">
           <CardHeader>
-            <div className="mb-4 flex items-center justify-center rounded-lg bg-green-100 p-3 w-fit">
-              <MessageSquare className="size-8 text-green-600" />
+            <div className="mb-4 flex items-center justify-center rounded-lg bg-secondary p-3 w-fit">
+              <MessageSquare className="size-8 text-primary" />
             </div>
             <CardTitle className="text-2xl">Have a conversation</CardTitle>
             <CardDescription className="text-base">
@@ -44,8 +44,8 @@ export default async function Home() {
 
         <Card className="flex flex-col transition-all hover:shadow-lg">
           <CardHeader>
-            <div className="mb-4 flex items-center justify-center rounded-lg bg-blue-100 p-3 w-fit">
-              <ImageIcon className="size-8 text-blue-600" />
+            <div className="mb-4 flex items-center justify-center rounded-lg bg-accent p-3 w-fit">
+              <ImageIcon className="size-8 text-accent-foreground" />
             </div>
             <CardTitle className="text-2xl">Generate an image</CardTitle>
             <CardDescription className="text-base">
@@ -64,8 +64,8 @@ export default async function Home() {
 
         <Card className="flex flex-col transition-all hover:shadow-lg">
           <CardHeader>
-            <div className="mb-4 flex items-center justify-center rounded-lg bg-purple-100 p-3 w-fit">
-              <Video className="size-8 text-purple-600" />
+            <div className="mb-4 flex items-center justify-center rounded-lg bg-muted p-3 w-fit">
+              <Video className="size-8 text-primary" />
             </div>
             <CardTitle className="text-2xl">Make a video</CardTitle>
             <CardDescription className="text-base">
@@ -83,30 +83,32 @@ export default async function Home() {
         </Card>
       </div>
 
-      <div className="mx-auto mt-16 max-w-3xl space-y-4 text-center">
-        <p className="text-gray-600 text-sm leading-relaxed">
+      <div className="mx-auto mt-20 max-w-2xl space-y-3 text-center">
+        <p className="text-foreground/70 text-base leading-relaxed">
           Powered by{' '}
           <a
             href="https://echo.merit.systems/dashboard"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-gray-900 hover:text-blue-600 transition-colors"
+            className="font-semibold text-primary hover:text-primary/80 transition-colors underline decoration-primary/30 underline-offset-2"
           >
             Merit Systems Echo
           </a>
-          . Looking for more? There are{' '}
+        </p>
+        <p className="text-foreground/60 text-sm leading-relaxed">
+          Looking for more?{' '}
           <a
             href="https://echo.merit.systems/top-apps"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-gray-900 hover:text-blue-600 transition-colors"
+            className="font-medium text-primary hover:text-primary/80 transition-colors underline decoration-primary/30 underline-offset-2"
           >
-            hundreds of purpose-built apps in the Echo app store
-          </a>
-          .
+            Explore hundreds of purpose-built apps
+          </a>{' '}
+          in the Echo app store.
         </p>
-        <p className="text-gray-500 text-xs">
-          One credit pool. All Echo apps. Never expires.
+        <p className="text-foreground/50 text-sm font-medium pt-2">
+          One credit pool · All Echo apps · Never expires
         </p>
       </div>
     </div>

@@ -27,7 +27,7 @@ const Header: FC<HeaderProps> = ({
 
   return (
     <header
-      className={`border-gray-200 border-b bg-white shadow-sm ${className}`}
+      className={`border-b border-border bg-card shadow-sm ${className}`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
@@ -40,7 +40,7 @@ const Header: FC<HeaderProps> = ({
                 height={40}
                 className="transition-transform group-hover:scale-105"
               />
-              <h1 className="cursor-pointer font-semibold text-gray-900 text-xl group-hover:text-gray-700 transition-colors">
+              <h1 className="cursor-pointer font-semibold text-foreground text-xl group-hover:text-muted-foreground transition-colors">
                 {title}
               </h1>
             </Link>
