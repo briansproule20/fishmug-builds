@@ -11,3 +11,9 @@ Checkout apps I've built to spark creativity, solve problems, and have fun.
 - Merit Systems Echo (AI billing in a box)
 - Next.js, typescript, react
 - Tailwind, shadcn, aceternity, framer motion
+
+# Tools I Use
+- Father Git 🙏
+- Cursor, Claude Code
+- Open ai models for brainstorming
+- Canva for graphic design
