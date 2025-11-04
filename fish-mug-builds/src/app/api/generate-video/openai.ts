@@ -8,6 +8,15 @@ import OpenAI from 'openai';
 
 const BASE_URL = process.env.BASE_URL || 'https://echo.router.merit.systems/v1';
 
+// Custom types for video generation (OpenAI v5 doesn't export these)
+interface VideoCreateParams {
+  model: string;
+  prompt: string;
+  seconds: "4" | "8" | "12";
+  size: string;
+  input_reference?: File;
+}
+
 /**
  * Initiates OpenAI Sora video generation
  */
@@ -35,8 +44,8 @@ export async function handleSoraGenerate(
       baseURL: BASE_URL,
     });
 
-    const createParams: OpenAI.VideoCreateParams = {
-      model: model as OpenAI.VideoModel,
+    const createParams: VideoCreateParams = {
+      model,
       prompt,
       seconds: durationSeconds.toString() as "4" | "8" | "12",
       size: '1280x720', // Default landscape
@@ -66,6 +75,7 @@ export async function handleSoraGenerate(
       hasImage: !!createParams.input_reference,
     });
 
+    // @ts-expect-error - OpenAI v5 doesn't have video types, but Echo router supports it
     const video = await openai.videos.create(createParams);
     console.log('[Sora Gen] Video created:', video.id);
 
@@ -120,6 +130,7 @@ export async function checkSoraOperationStatus(
       baseURL: BASE_URL,
     });
 
+    // @ts-expect-error - OpenAI v5 doesn't have video types, but Echo router supports it
     const video = await openai.videos.retrieve(operationId);
     console.log('[Sora Status] Video status:', video.status);
 
