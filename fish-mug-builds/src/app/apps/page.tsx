@@ -253,6 +253,46 @@ const CaseStudyPreview = () => (
   </div>
 );
 
+const CodeExplainerPreview = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/10 to-accent/20 items-center justify-center">
+    <img
+      src="/app-icons/code-explainer.png"
+      alt="Code Explainer"
+      className="size-24 object-contain"
+    />
+  </div>
+);
+
+const ColorForgePreview = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/10 to-accent/20 items-center justify-center">
+    <img
+      src="/app-icons/color-forge.png"
+      alt="ColorForge"
+      className="size-24 object-contain"
+    />
+  </div>
+);
+
+const ArtifexPreview = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary to-foreground/80 items-center justify-center">
+    <img
+      src="/app-icons/Artifex_Favicon.png"
+      alt="Artifex"
+      className="size-24 object-contain"
+    />
+  </div>
+);
+
+const AphorizePreview = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/10 to-accent/20 items-center justify-center">
+    <img
+      src="/app-icons/aphorize-favicon.png"
+      alt="Aphorize"
+      className="size-24 object-contain"
+    />
+  </div>
+);
+
 const featuredApps = [
   {
     title: "Trivia Wizard",
@@ -371,31 +411,80 @@ const featuredApps = [
     },
   },
   {
-    title: "Quick Tools",
-    description: "Handy utilities for everyday tasks",
-    header: <Skeleton />,
-    icon: <Zap className="h-4 w-4 text-primary" />,
+    title: "Code Explainer",
+    description: "Paste code snippets, get plain English explanations instantly",
+    header: <CodeExplainerPreview />,
+    icon: <img src="/app-icons/code-explainer.png" alt="Code Explainer" className="h-4 w-4" />,
+    modalInfo: {
+      fullDescription: "Paste code snippets and receive clear, straightforward explanations in plain English. Perfect for learning new languages, understanding unfamiliar syntax, or quickly documenting code.",
+      features: [
+        "Instant code explanations in plain English",
+        "Support for multiple programming languages",
+        "Clean, simple interface",
+        "Fast AI-powered analysis",
+        "Great for learning and documentation",
+      ],
+      liveUrl: "https://code-explainer-nu.vercel.app",
+      githubUrl: "https://github.com/briansproule20/code-explainer",
+    },
   },
 ];
 
 const moreApps = [
   {
-    title: "Text Editor",
-    description: "Write and edit with powerful formatting tools",
-    header: <Skeleton />,
-    icon: <FolderOpen className="h-4 w-4 text-primary" />,
+    title: "ColorForge",
+    description: "AI-powered color palette generator using advanced color theory",
+    header: <ColorForgePreview />,
+    icon: <img src="/app-icons/color-forge.png" alt="ColorForge" className="h-4 w-4" />,
+    modalInfo: {
+      fullDescription: "AI-powered color palette generator that creates beautiful, harmonious color schemes for any project. Generate palettes from text descriptions or images using advanced color theory.",
+      features: [
+        "AI-powered palette generation",
+        "Text-based palette creation from descriptions",
+        "Image upload for color extraction",
+        "Interactive Poline playground",
+        "Save and manage your palettes",
+        "Advanced color theory algorithms",
+      ],
+      liveUrl: "https://color-forge-rust.vercel.app",
+      githubUrl: "https://github.com/briansproule20/color-forge",
+    },
   },
   {
-    title: "Design Tools",
-    description: "Create stunning visuals and graphics",
-    header: <Skeleton />,
-    icon: <Palette className="h-4 w-4 text-primary" />,
+    title: "Artifex",
+    description: "AI art critic and co-creator featuring 10 unique critic personas",
+    header: <ArtifexPreview />,
+    icon: <img src="/app-icons/Artifex_Favicon.png" alt="Artifex" className="h-4 w-4" />,
+    modalInfo: {
+      fullDescription: "An interactive AI art critic and co-creator. Chat with 10 distinct AI art critics about your work, artistic movements, or creative ideas—and generate new artwork in dozens of styles.",
+      features: [
+        "10 unique AI critic personas with distinct perspectives",
+        "AI-powered art generation in multiple styles",
+        "Museum collection exploration",
+        "Deep art critique and analysis",
+        "Creative collaboration with AI",
+      ],
+      liveUrl: "https://artifex-art.vercel.app/",
+      githubUrl: "https://github.com/briansproule20/artifex",
+    },
   },
   {
-    title: "Productivity Hub",
-    description: "Organize tasks and boost your workflow",
-    header: <Skeleton />,
-    icon: <Zap className="h-4 w-4 text-primary" />,
+    title: "Aphorize",
+    description: "Find and create memorable quotes with AI, turn them into beautiful posters",
+    header: <AphorizePreview />,
+    icon: <img src="/app-icons/aphorize-favicon.png" alt="Aphorize" className="h-4 w-4" />,
+    modalInfo: {
+      fullDescription: "Find and create memorable quotes with AI, then turn them into beautiful posters. Discover inspirational quotes or generate your own, and transform them into shareable visual content.",
+      features: [
+        "AI-powered quote discovery",
+        "Generate custom quotes with AI",
+        "Create beautiful poster designs",
+        "Extensive quote library",
+        "Export and share creations",
+      ],
+      liveUrl: "https://aphorizequotes.vercel.app",
+      githubUrl: "https://github.com/briansproule20/aphorize",
+    },
   },
   {
     title: "Development Suite",
@@ -437,7 +526,40 @@ const moreApps = [
 ];
 
 const allApps = [
-  { name: "AI Studio", icon: <Sparkles className="size-8" />, href: "/ai" },
+  {
+    name: "Aphorize",
+    icon: <img src="/app-icons/aphorize-favicon.png" alt="Aphorize" className="size-8" />,
+    href: "https://aphorizequotes.vercel.app",
+    modalInfo: {
+      fullDescription: "Find and create memorable quotes with AI, then turn them into beautiful posters. Discover inspirational quotes or generate your own, and transform them into shareable visual content.",
+      features: [
+        "AI-powered quote discovery",
+        "Generate custom quotes with AI",
+        "Create beautiful poster designs",
+        "Extensive quote library",
+        "Export and share creations",
+      ],
+      liveUrl: "https://aphorizequotes.vercel.app",
+      githubUrl: "https://github.com/briansproule20/aphorize",
+    },
+  },
+  {
+    name: "Artifex",
+    icon: <img src="/app-icons/Artifex_Favicon.png" alt="Artifex" className="size-8" />,
+    href: "https://artifex-art.vercel.app/",
+    modalInfo: {
+      fullDescription: "An interactive AI art critic and co-creator. Chat with 10 distinct AI art critics about your work, artistic movements, or creative ideas—and generate new artwork in dozens of styles.",
+      features: [
+        "10 unique AI critic personas with distinct perspectives",
+        "AI-powered art generation in multiple styles",
+        "Museum collection exploration",
+        "Deep art critique and analysis",
+        "Creative collaboration with AI",
+      ],
+      liveUrl: "https://artifex-art.vercel.app/",
+      githubUrl: "https://github.com/briansproule20/artifex",
+    },
+  },
   {
     name: "Big Corp Inc",
     icon: <img src="/app-icons/bigcorpinc.png" alt="Big Corp Inc" className="size-8" />,
@@ -476,12 +598,51 @@ const allApps = [
       githubUrl: "https://github.com/briansproule20/case-study",
     },
   },
+  {
+    name: "Code Explainer",
+    icon: <img src="/app-icons/code-explainer.png" alt="Code Explainer" className="size-8" />,
+    href: "https://code-explainer-nu.vercel.app",
+    modalInfo: {
+      fullDescription: "Paste code snippets and receive clear, straightforward explanations in plain English. Perfect for learning new languages, understanding unfamiliar syntax, or quickly documenting code.",
+      features: [
+        "Instant code explanations in plain English",
+        "Support for multiple programming languages",
+        "Clean, simple interface",
+        "Fast AI-powered analysis",
+        "Great for learning and documentation",
+      ],
+      liveUrl: "https://code-explainer-nu.vercel.app",
+      githubUrl: "https://github.com/briansproule20/code-explainer",
+    },
+  },
   { name: "Code Tools", icon: <Code className="size-8" />, href: "#" },
+  {
+    name: "ColorForge",
+    icon: <img src="/app-icons/color-forge.png" alt="ColorForge" className="size-8" />,
+    href: "https://color-forge-rust.vercel.app",
+    modalInfo: {
+      fullDescription: "AI-powered color palette generator that creates beautiful, harmonious color schemes for any project. Generate palettes from text descriptions or images using advanced color theory.",
+      features: [
+        "AI-powered palette generation",
+        "Text-based palette creation from descriptions",
+        "Image upload for color extraction",
+        "Interactive Poline playground",
+        "Save and manage your palettes",
+        "Advanced color theory algorithms",
+      ],
+      liveUrl: "https://color-forge-rust.vercel.app",
+      githubUrl: "https://github.com/briansproule20/color-forge",
+    },
+  },
   { name: "Collab", icon: <MessageSquare className="size-8" />, href: "#" },
   { name: "Contacts", icon: <FolderOpen className="size-8" />, href: "#" },
   { name: "Crypto", icon: <Zap className="size-8" />, href: "#" },
   { name: "Design Kit", icon: <Palette className="size-8" />, href: "#" },
-  { name: "Docs", icon: <FolderOpen className="size-8" />, href: "#" },
+  {
+    name: "Echo Studio",
+    icon: <img src="/logo/light.svg" alt="Echo Studio" className="size-8" />,
+    href: "https://www.fishmug.dev/ai",
+  },
   { name: "Email", icon: <MessageSquare className="size-8" />, href: "#" },
   { name: "Files", icon: <FolderOpen className="size-8" />, href: "#" },
   { name: "Finance", icon: <Code className="size-8" />, href: "#" },
@@ -574,9 +735,7 @@ const allApps = [
   },
   { name: "Shopping", icon: <Zap className="size-8" />, href: "#" },
   { name: "Slides", icon: <Palette className="size-8" />, href: "#" },
-  { name: "Social", icon: <MessageSquare className="size-8" />, href: "#" },
   { name: "Tasks", icon: <Zap className="size-8" />, href: "#" },
-  { name: "Text Editor", icon: <FolderOpen className="size-8" />, href: "#" },
   {
     name: "Trivia Wizard",
     icon: <img src="/app-icons/trivia-wizard.png" alt="Trivia Wizard" className="size-8" />,
@@ -594,6 +753,4 @@ const allApps = [
       githubUrl: "https://github.com/briansproule20/echo-trivia",
     },
   },
-  { name: "Video Gen", icon: <Video className="size-8" />, href: "/video" },
-  { name: "Videos", icon: <Video className="size-8" />, href: "#" },
 ];
