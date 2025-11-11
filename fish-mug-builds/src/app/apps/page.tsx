@@ -323,6 +323,16 @@ const HeyBarkeepPreview = () => (
   </div>
 );
 
+const YesChefPreview = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/10 to-accent/20 items-center justify-center">
+    <img
+      src="/app-icons/yes-chef favicon.png"
+      alt="Yes Chef"
+      className="size-24 object-contain"
+    />
+  </div>
+);
+
 const featuredApps = [
   {
     title: "Trivia Wizard",
@@ -481,21 +491,22 @@ const moreApps = [
     },
   },
   {
-    title: "Artifex",
-    description: "AI art critic and co-creator featuring 10 unique critic personas",
-    header: <ArtifexPreview />,
-    icon: <img src="/app-icons/Artifex_Favicon.png" alt="Artifex" className="h-4 w-4" />,
+    title: "Yes Chef",
+    description: "AI-powered culinary assistant for recipes and cooking guidance",
+    header: <YesChefPreview />,
+    icon: <img src="/app-icons/yes-chef favicon.png" alt="Yes Chef" className="h-4 w-4" />,
     modalInfo: {
-      fullDescription: "An interactive AI art critic and co-creator. Chat with 10 distinct AI art critics about your work, artistic movements, or creative ideas—and generate new artwork in dozens of styles.",
+      fullDescription: "Your AI-powered culinary assistant providing recipe suggestions, alterations, and cooking guidance. Chat with an expert chef assistant to discover new dishes, learn cooking techniques, and perfect your culinary skills. The cousin app of Hey Barkeep.",
       features: [
-        "10 unique AI critic personas with distinct perspectives",
-        "AI-powered art generation in multiple styles",
-        "Museum collection exploration",
-        "Deep art critique and analysis",
-        "Creative collaboration with AI",
+        "AI-powered recipe recommendations and alterations",
+        "Interactive cooking advice and guidance",
+        "Chat-based interface for easy conversation",
+        "Secure authentication with Echo integration",
+        "Personalized recipe suggestions",
+        "Expert culinary knowledge at your fingertips",
       ],
-      liveUrl: "https://artifex-art.vercel.app/",
-      githubUrl: "https://github.com/briansproule20/artifex",
+      liveUrl: "https://yeschef-carrot.vercel.app/",
+      githubUrl: "https://github.com/briansproule20/yeschef",
     },
   },
   {
@@ -718,7 +729,6 @@ const allApps = [
   { name: "Files", icon: <FolderOpen className="size-8" />, href: "#" },
   { name: "Finance", icon: <Code className="size-8" />, href: "#" },
   { name: "Fitness", icon: <Zap className="size-8" />, href: "#" },
-  { name: "Forms", icon: <MessageSquare className="size-8" />, href: "#" },
   { name: "Games", icon: <Palette className="size-8" />, href: "#" },
   {
     name: "Hey Barkeep",
@@ -773,7 +783,24 @@ const allApps = [
       githubUrl: "https://github.com/briansproule20/IWB",
     },
   },
-  { name: "Invest", icon: <Sparkles className="size-8" />, href: "#" },
+  {
+    name: "Yes Chef",
+    icon: <img src="/app-icons/yes-chef favicon.png" alt="Yes Chef" className="size-8" />,
+    href: "https://yeschef-carrot.vercel.app/",
+    modalInfo: {
+      fullDescription: "Your AI-powered culinary assistant providing recipe suggestions, alterations, and cooking guidance. Chat with an expert chef assistant to discover new dishes, learn cooking techniques, and perfect your culinary skills. The cousin app of Hey Barkeep.",
+      features: [
+        "AI-powered recipe recommendations and alterations",
+        "Interactive cooking advice and guidance",
+        "Chat-based interface for easy conversation",
+        "Secure authentication with Echo integration",
+        "Personalized recipe suggestions",
+        "Expert culinary knowledge at your fingertips",
+      ],
+      liveUrl: "https://yeschef-carrot.vercel.app/",
+      githubUrl: "https://github.com/briansproule20/yeschef",
+    },
+  },
   {
     name: "LitParlor",
     icon: <img src="/app-icons/litparlor.png" alt="LitParlor" className="size-8" />,
@@ -795,13 +822,10 @@ const allApps = [
       ],
     },
   },
-  { name: "Maps", icon: <Zap className="size-8" />, href: "#" },
-  { name: "Media Hub", icon: <Image className="size-8" />, href: "#" },
   { name: "Music", icon: <Sparkles className="size-8" />, href: "#" },
   { name: "News", icon: <FolderOpen className="size-8" />, href: "#" },
   { name: "Notes", icon: <FolderOpen className="size-8" />, href: "#" },
   { name: "Photos", icon: <Image className="size-8" />, href: "#" },
-  { name: "Podcasts", icon: <Sparkles className="size-8" />, href: "#" },
   {
     name: "Proof of Intelligence Mint",
     icon: <img src="/app-icons/poic-favicon.png" alt="Proof of Intelligence Mint" className="size-8" />,
@@ -820,8 +844,6 @@ const allApps = [
       githubUrl: "https://github.com/briansproule20/proof-of-intelligence-mint",
     },
   },
-  { name: "Quick Tools", icon: <Zap className="size-8" />, href: "#" },
-  { name: "Sheets", icon: <Code className="size-8" />, href: "#" },
   {
     name: "Shirtslop",
     icon: <img src="/app-icons/shirtslop.png" alt="Shirtslop" className="size-8" />,
@@ -839,8 +861,6 @@ const allApps = [
       githubUrl: "https://github.com/rsproule/shirtslop",
     },
   },
-  { name: "Shopping", icon: <Zap className="size-8" />, href: "#" },
-  { name: "Slides", icon: <Palette className="size-8" />, href: "#" },
   {
     name: "Slop Shop",
     icon: <img src="/app-icons/slopshop favicon.png" alt="Slop Shop" className="size-8" />,
