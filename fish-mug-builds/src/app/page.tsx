@@ -1,4 +1,4 @@
-import { FolderOpen, Sparkles } from 'lucide-react';
+import { FolderOpen } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import {
@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { CometCard } from '@/components/ui/comet-card';
 import { WavyBackground } from '@/components/ui/wavy-background';
 
 export default async function Home() {
@@ -41,55 +42,28 @@ export default async function Home() {
         </p>
       </div>
 
-      <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2">
-        <Card className="flex flex-col transition-all hover:shadow-xl">
-          <CardHeader>
-            <div className="mb-4 flex items-center justify-center rounded-lg bg-secondary p-4 w-fit">
-              <FolderOpen className="size-10 text-primary" />
-            </div>
-            <CardTitle className="text-3xl">App Directory</CardTitle>
-            <CardDescription className="text-lg">
-              Browse and explore all available applications
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="mt-auto">
-            <Link href="/apps">
-              <Button className="w-full" size="lg" variant="outline">
-                <FolderOpen className="mr-2 size-5" />
-                View Apps
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
-
-        <Card className="flex flex-col transition-all hover:shadow-xl">
-          <CardHeader>
-            <div className="mb-4 flex items-center justify-center rounded-lg bg-accent p-4 w-fit">
-              <Sparkles className="size-10 text-accent-foreground" />
-            </div>
-            <CardTitle className="text-3xl">Echo Studio</CardTitle>
-            <CardDescription className="text-lg">
-              explore{' '}
-              <a
-                href="https://echo.merit.systems/dashboard"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-muted-foreground hover:text-primary transition-colors"
-              >
-                Echo
-              </a>{' '}
-              chat, image, and video templates
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="mt-auto">
-            <Link href="/ai">
-              <Button className="w-full" size="lg">
-                <Sparkles className="mr-2 size-5" />
-                Enter Echo Studio
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
+      <div className="mx-auto flex max-w-2xl justify-center">
+        <CometCard className="w-full">
+          <Card className="flex flex-col">
+            <CardHeader>
+              <div className="mb-4 flex items-center justify-center rounded-lg bg-secondary p-4 w-fit">
+                <FolderOpen className="size-10 text-primary" />
+              </div>
+              <CardTitle className="text-3xl">App Directory</CardTitle>
+              <CardDescription className="text-lg">
+                Check out the apps I've built
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="mt-auto">
+              <Link href="/apps">
+                <Button className="w-full" size="lg" variant="outline">
+                  <FolderOpen className="mr-2 size-5" />
+                  View Apps
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+        </CometCard>
       </div>
       </div>
     </div>
