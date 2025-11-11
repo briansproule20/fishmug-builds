@@ -849,7 +849,7 @@ const allApps = [
     icon: <img src="/app-icons/hey-bartender favicon.png" alt="Hey Barkeep" className="size-8" />,
     href: "https://hey-barkeep.vercel.app/",
     modalInfo: {
-      fullDescription: "Your AI-powered bartender providing cocktail recipes and expert mixology guidance. Chat with a knowledgeable bartender assistant to discover new drinks, learn mixing techniques, and perfect your cocktail craft.",
+      fullDescription: "Your AI-powered bartender providing cocktail recipes and expert mixology guidance. Chat with a knowledgeable bartender assistant to discover new drinks, learn mixing techniques, and perfect your cocktail craft. The cousin app of Yes Chef.",
       features: [
         "AI-powered cocktail recipe recommendations",
         "Interactive mixology advice and guidance",
