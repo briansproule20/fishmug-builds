@@ -765,6 +765,24 @@ const allApps = [
       githubUrl: "https://github.com/sprolzee/TheForge",
     },
   },
+  {
+    name: "Fuzzy Pancake",
+    icon: <img src="/app-icons/fuzzy-pancake favicon.png" alt="Fuzzy Pancake" className="size-8" />,
+    href: "https://fuzzy-pancake-seven.vercel.app/",
+    modalInfo: {
+      fullDescription: "An AI-powered photo stitching tool that blends two images together into creative composites. Perfect for combining photos of your younger self with current pictures, or blending any two images to create unique visual mashups.",
+      features: [
+        "AI-powered image blending and stitching",
+        "Upload two photos (JPG, PNG formats)",
+        "Generate creative composite images",
+        "Optimized for personal photo combinations",
+        "Fast processing and generation",
+        "Simple, intuitive interface",
+      ],
+      liveUrl: "https://fuzzy-pancake-seven.vercel.app/",
+      githubUrl: "https://github.com/briansproule20/fuzzy-pancake",
+    },
+  },
   { name: "Games", icon: <Palette className="size-8" />, href: "#" },
   {
     name: "Hey Barkeep",
@@ -862,6 +880,24 @@ const allApps = [
   { name: "News", icon: <FolderOpen className="size-8" />, href: "#" },
   { name: "Notes", icon: <FolderOpen className="size-8" />, href: "#" },
   { name: "Photos", icon: <Image className="size-8" />, href: "#" },
+  {
+    name: "The Witness Hub",
+    icon: <img src="/app-icons/witnesshub favicon.png" alt="The Witness Hub" className="size-8" />,
+    href: "https://www.matthsmith.com/",
+    modalInfo: {
+      fullDescription: "The ultimate LeBron James fan shrine celebrating the King's legendary career. A tongue-in-cheek tribute featuring daily highlights, career statistics, and a community leaderboard for the most devoted fans. Declare your allegiance and witness greatness.",
+      features: [
+        "Today in Bron History with daily highlights",
+        "Irrefutable Evidence showcasing 40,000+ points and achievements",
+        "Glazer Leaderboard ranking top witnesses",
+        "Interactive GOAT-o-meter for rating greatness",
+        "Hall of Glaze community recognition",
+        "Petition signing to declare allegiance",
+      ],
+      liveUrl: "https://www.matthsmith.com/",
+      githubUrl: "https://github.com/briansproule20/sassy-mate",
+    },
+  },
   {
     name: "Proof of Intelligence Mint",
     icon: <img src="/app-icons/poic-favicon.png" alt="Proof of Intelligence Mint" className="size-8" />,
