@@ -609,6 +609,24 @@ const moreApps = [
 
 const allApps = [
   {
+    name: "Astrologer's Almanac",
+    icon: <img src="/app-icons/astrology favicon.png" alt="Astrologer's Almanac" className="size-8" />,
+    href: "https://astrologers-almanac.vercel.app/",
+    modalInfo: {
+      fullDescription: "An AI-powered astrological guidance platform providing personalized cosmic insights. Discover your cosmic path through daily horoscopes, birth chart analysis, and celestial guidance tailored to your astrological profile.",
+      features: [
+        "Personalized astrological insights powered by AI",
+        "Daily horoscopes and cosmic forecasts",
+        "Detailed birth chart analysis and interpretations",
+        "Celestial guidance and astrological counsel",
+        "Secure authentication with Echo integration",
+        "Chat-based interface for cosmic guidance",
+      ],
+      liveUrl: "https://astrologers-almanac.vercel.app/",
+      githubUrl: "https://github.com/briansproule20/zodiac-lightning",
+    },
+  },
+  {
     name: "Aphorize",
     icon: <img src="/app-icons/aphorize-favicon.png" alt="Aphorize" className="size-8" />,
     href: "https://aphorizequotes.vercel.app",
