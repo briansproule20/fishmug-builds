@@ -274,7 +274,7 @@ const ColorForgePreview = () => (
 );
 
 const ArtifexPreview = () => (
-  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary to-foreground/80 items-center justify-center">
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/40 to-primary/60 items-center justify-center">
     <img
       src="/app-icons/Artifex_Favicon.png"
       alt="Artifex"
@@ -288,6 +288,16 @@ const AphorizePreview = () => (
     <img
       src="/app-icons/aphorize-favicon.png"
       alt="Aphorize"
+      className="size-24 object-contain"
+    />
+  </div>
+);
+
+const SlopShopPreview = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/10 to-accent/20 items-center justify-center">
+    <img
+      src="/app-icons/slopshop favicon.png"
+      alt="Slop Shop"
       className="size-24 object-contain"
     />
   </div>
@@ -493,10 +503,25 @@ const moreApps = [
     icon: <Code className="h-4 w-4 text-primary" />,
   },
   {
-    title: "Media Manager",
-    description: "Organize and optimize your media files",
-    header: <Skeleton />,
-    icon: <Image className="h-4 w-4 text-primary" />,
+    title: "Slop Shop",
+    description: "The nano banana to gift pipeline—Shirtslop's little brother for custom gifts",
+    header: <SlopShopPreview />,
+    icon: <img src="/app-icons/slopshop favicon.png" alt="Slop Shop" className="h-4 w-4" />,
+    modalInfo: {
+      fullDescription: "The nano banana to gift pipeline. Slop Shop is Shirtslop's little brother, bringing the same fast custom printing experience to a wide range of gifts and products.",
+      features: [
+        "Fast custom gift creation",
+        "Wide variety of product options",
+        "Real-time preview on product mockups",
+        "High-quality print production",
+        "Simple ordering process",
+      ],
+      liveUrl: "https://www.theslopshop.app/",
+      githubUrl: "https://github.com/briansproule20/slop-shop",
+      additionalLinks: [
+        { label: "Slop Shop Store", url: "https://slopshop-app.myshopify.com/" },
+      ],
+    },
   },
   {
     title: "Big Corp Inc",
@@ -735,6 +760,26 @@ const allApps = [
   },
   { name: "Shopping", icon: <Zap className="size-8" />, href: "#" },
   { name: "Slides", icon: <Palette className="size-8" />, href: "#" },
+  {
+    name: "Slop Shop",
+    icon: <img src="/app-icons/slopshop favicon.png" alt="Slop Shop" className="size-8" />,
+    href: "https://www.theslopshop.app/",
+    modalInfo: {
+      fullDescription: "The nano banana to gift pipeline. Slop Shop is Shirtslop's little brother, bringing the same fast custom printing experience to a wide range of gifts and products.",
+      features: [
+        "Fast custom gift creation",
+        "Wide variety of product options",
+        "Real-time preview on product mockups",
+        "High-quality print production",
+        "Simple ordering process",
+      ],
+      liveUrl: "https://www.theslopshop.app/",
+      githubUrl: "https://github.com/briansproule20/slop-shop",
+      additionalLinks: [
+        { label: "Slop Shop Store", url: "https://slopshop-app.myshopify.com/" },
+      ],
+    },
+  },
   { name: "Tasks", icon: <Zap className="size-8" />, href: "#" },
   {
     name: "Trivia Wizard",
