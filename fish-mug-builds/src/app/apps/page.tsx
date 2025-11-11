@@ -303,6 +303,16 @@ const SlopShopPreview = () => (
   </div>
 );
 
+const ProofOfIntelligencePreview = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/10 to-accent/20 items-center justify-center">
+    <img
+      src="/app-icons/poic-favicon.png"
+      alt="Proof of Intelligence Mint"
+      className="size-24 object-contain"
+    />
+  </div>
+);
+
 const featuredApps = [
   {
     title: "Trivia Wizard",
@@ -497,10 +507,23 @@ const moreApps = [
     },
   },
   {
-    title: "Development Suite",
-    description: "A comprehensive toolkit for developers building modern applications",
-    header: <Skeleton />,
-    icon: <Code className="h-4 w-4 text-primary" />,
+    title: "Proof of Intelligence Mint",
+    description: "Blockchain trivia game on Base powered by x402",
+    header: <ProofOfIntelligencePreview />,
+    icon: <img src="/app-icons/poic-favicon.png" alt="Proof of Intelligence Mint" className="h-4 w-4" />,
+    modalInfo: {
+      fullDescription: "A blockchain-based trivia game on the Base network where players answer AI-generated questions to earn POIC cryptocurrency tokens. Wrapped in satirical dystopian framing, it's a straightforward play-to-earn trivia experience.",
+      features: [
+        "AI-powered trivia questions by Claude Sonnet 4.5",
+        "Earn 5,000 POIC tokens per correct answer",
+        "Built on Base blockchain network",
+        "Wallet integration (Coinbase, MetaMask, WalletConnect)",
+        "Optional automated Intelligence Miner Agent",
+        "Dystopian satire meets blockchain trivia",
+      ],
+      liveUrl: "https://poim.io/",
+      githubUrl: "https://github.com/briansproule20/proof-of-intelligence-mint",
+    },
   },
   {
     title: "Slop Shop",
@@ -739,6 +762,24 @@ const allApps = [
   { name: "Notes", icon: <FolderOpen className="size-8" />, href: "#" },
   { name: "Photos", icon: <Image className="size-8" />, href: "#" },
   { name: "Podcasts", icon: <Sparkles className="size-8" />, href: "#" },
+  {
+    name: "Proof of Intelligence Mint",
+    icon: <img src="/app-icons/poic-favicon.png" alt="Proof of Intelligence Mint" className="size-8" />,
+    href: "https://poim.io/",
+    modalInfo: {
+      fullDescription: "A blockchain-based trivia game on the Base network where players answer AI-generated questions to earn POIC cryptocurrency tokens. Wrapped in satirical dystopian framing, it's a straightforward play-to-earn trivia experience.",
+      features: [
+        "AI-powered trivia questions by Claude Sonnet 4.5",
+        "Earn 5,000 POIC tokens per correct answer",
+        "Built on Base blockchain network",
+        "Wallet integration (Coinbase, MetaMask, WalletConnect)",
+        "Optional automated Intelligence Miner Agent",
+        "Dystopian satire meets blockchain trivia",
+      ],
+      liveUrl: "https://poim.io/",
+      githubUrl: "https://github.com/briansproule20/proof-of-intelligence-mint",
+    },
+  },
   { name: "Quick Tools", icon: <Zap className="size-8" />, href: "#" },
   { name: "Sheets", icon: <Code className="size-8" />, href: "#" },
   {
