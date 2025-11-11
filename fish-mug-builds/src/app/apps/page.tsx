@@ -313,6 +313,16 @@ const ProofOfIntelligencePreview = () => (
   </div>
 );
 
+const HeyBarkeepPreview = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/10 to-accent/20 items-center justify-center">
+    <img
+      src="/app-icons/hey-bartender favicon.png"
+      alt="Hey Barkeep"
+      className="size-24 object-contain"
+    />
+  </div>
+);
+
 const featuredApps = [
   {
     title: "Trivia Wizard",
@@ -566,10 +576,23 @@ const moreApps = [
     },
   },
   {
-    title: "Collaboration Tools",
-    description: "Work together seamlessly with your team on any project",
-    header: <Skeleton />,
-    icon: <MessageSquare className="h-4 w-4 text-primary" />,
+    title: "Hey Barkeep",
+    description: "AI-powered bartender for cocktail recipes and mixology advice",
+    header: <HeyBarkeepPreview />,
+    icon: <img src="/app-icons/hey-bartender favicon.png" alt="Hey Barkeep" className="h-4 w-4" />,
+    modalInfo: {
+      fullDescription: "Your AI-powered bartender providing cocktail recipes and expert mixology guidance. Chat with a knowledgeable bartender assistant to discover new drinks, learn mixing techniques, and perfect your cocktail craft.",
+      features: [
+        "AI-powered cocktail recipe recommendations",
+        "Interactive mixology advice and guidance",
+        "Chat-based interface for easy conversation",
+        "Secure authentication with Echo integration",
+        "Personalized cocktail suggestions",
+        "Expert bartending knowledge at your fingertips",
+      ],
+      liveUrl: "https://hey-barkeep.vercel.app/",
+      githubUrl: "https://github.com/briansproule20/hey-barkeep",
+    },
   },
 ];
 
@@ -697,7 +720,24 @@ const allApps = [
   { name: "Fitness", icon: <Zap className="size-8" />, href: "#" },
   { name: "Forms", icon: <MessageSquare className="size-8" />, href: "#" },
   { name: "Games", icon: <Palette className="size-8" />, href: "#" },
-  { name: "Health", icon: <Zap className="size-8" />, href: "#" },
+  {
+    name: "Hey Barkeep",
+    icon: <img src="/app-icons/hey-bartender favicon.png" alt="Hey Barkeep" className="size-8" />,
+    href: "https://hey-barkeep.vercel.app/",
+    modalInfo: {
+      fullDescription: "Your AI-powered bartender providing cocktail recipes and expert mixology guidance. Chat with a knowledgeable bartender assistant to discover new drinks, learn mixing techniques, and perfect your cocktail craft.",
+      features: [
+        "AI-powered cocktail recipe recommendations",
+        "Interactive mixology advice and guidance",
+        "Chat-based interface for easy conversation",
+        "Secure authentication with Echo integration",
+        "Personalized cocktail suggestions",
+        "Expert bartending knowledge at your fingertips",
+      ],
+      liveUrl: "https://hey-barkeep.vercel.app/",
+      githubUrl: "https://github.com/briansproule20/hey-barkeep",
+    },
+  },
   {
     name: "History Tutor",
     icon: <img src="/app-icons/history-tutor-chat.png" alt="History Tutor" className="size-8" />,
@@ -821,7 +861,6 @@ const allApps = [
       ],
     },
   },
-  { name: "Tasks", icon: <Zap className="size-8" />, href: "#" },
   {
     name: "Trivia Wizard",
     icon: <img src="/app-icons/trivia-wizard.png" alt="Trivia Wizard" className="size-8" />,
