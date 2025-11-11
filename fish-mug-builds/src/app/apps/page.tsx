@@ -747,6 +747,24 @@ const allApps = [
   { name: "Files", icon: <FolderOpen className="size-8" />, href: "#" },
   { name: "Finance", icon: <Code className="size-8" />, href: "#" },
   { name: "Fitness", icon: <Zap className="size-8" />, href: "#" },
+  {
+    name: "The Forge",
+    icon: <img src="/app-icons/Forge-Favicon.png" alt="The Forge" className="size-8" />,
+    href: "https://the-forge-khaki.vercel.app/",
+    modalInfo: {
+      fullDescription: "An AI-powered search platform for discovering 3D printable models through natural language queries. Built by sprolzee and briansproule, The Forge searches across Thingiverse, Thangs, Printables, and MakerWorld to help makers find exactly what they need.",
+      features: [
+        "Natural language search for 3D models",
+        "Multi-platform integration (Thingiverse, Thangs, Printables, MakerWorld)",
+        "AI-driven model discovery and matching",
+        "Chat-based interface for easy browsing",
+        "Access to thousands of 3D printable models",
+        "Streamlined search across multiple repositories",
+      ],
+      liveUrl: "https://the-forge-khaki.vercel.app/",
+      githubUrl: "https://github.com/sprolzee/TheForge",
+    },
+  },
   { name: "Games", icon: <Palette className="size-8" />, href: "#" },
   {
     name: "Hey Barkeep",
