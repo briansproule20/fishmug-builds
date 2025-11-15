@@ -863,6 +863,23 @@ const allApps = [
     },
   },
   {
+    name: "Herbarium",
+    icon: <img src="/app-icons/herbarium favicon.png" alt="Herbarium" className="size-8" />,
+    href: "https://github.com/briansproule20/leafy-herbarium",
+    modalInfo: {
+      fullDescription: "A plant care companion app that helps you nurture your green friends. Talk to your plants, access comprehensive care guides, and keep your botanical companions thriving with AI-powered guidance.",
+      features: [
+        "Talk to your plants with AI chat",
+        "Comprehensive plant care guides",
+        "Plant health tracking and monitoring",
+        "Personalized care recommendations",
+        "Interactive plant companion experience",
+        "Expert botanical knowledge at your fingertips",
+      ],
+      githubUrl: "https://github.com/briansproule20/leafy-herbarium",
+    },
+  },
+  {
     name: "History Tutor",
     icon: <img src="/app-icons/history-tutor-chat.png" alt="History Tutor" className="size-8" />,
     href: "https://historytutor.litparlor.com/",
