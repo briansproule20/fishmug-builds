@@ -42,7 +42,7 @@ export default async function Home() {
         </p>
       </div>
 
-      <div className="mx-auto flex max-w-2xl justify-center">
+      <div className="mx-auto flex max-w-2xl justify-center mb-20">
         <CometCard className="w-full">
           <Card className="flex flex-col">
             <CardHeader>
@@ -64,6 +64,92 @@ export default async function Home() {
             </CardContent>
           </Card>
         </CometCard>
+      </div>
+
+      {/* About Me */}
+      <div className="mx-auto max-w-3xl font-serif">
+        <h2 className="text-4xl font-medium mb-12 text-center tracking-wide">About Me</h2>
+
+        <div className="space-y-12">
+          {/* Education */}
+          <section>
+            <h3 className="text-2xl font-medium mb-4 text-primary">Education</h3>
+            <div className="space-y-4 text-lg leading-relaxed">
+              <div>
+                <p className="font-semibold">Columbia University Journalism School</p>
+                <p className="text-muted-foreground">Publishing Course, Summer 2023</p>
+              </div>
+              <div>
+                <p className="font-semibold">The Ohio State University</p>
+                <p className="text-muted-foreground">B.A. English, Minor in Military History, 2023</p>
+                <p className="text-muted-foreground italic">Magna cum laude, University Honors</p>
+              </div>
+              <div>
+                <p className="font-semibold">University of Seville</p>
+                <p className="text-muted-foreground">Study Abroad, Summer 2022</p>
+              </div>
+              <div>
+                <p className="font-semibold">Pittsburgh Central Catholic High School</p>
+                <p className="text-muted-foreground">Class of 2019</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Experience */}
+          <section>
+            <h3 className="text-2xl font-medium mb-4 text-primary">Experience</h3>
+            <div className="space-y-6 text-lg leading-relaxed">
+              <div>
+                <p className="font-semibold">Editorial Associate & Builder @ Merit Systems</p>
+                <p className="text-muted-foreground">2024 – Present</p>
+                <p className="mt-1">Design, typesetting, and editorial work for company communications</p>
+              </div>
+              <div>
+                <p className="font-semibold">English Teacher @ Boyd H. Anderson High School</p>
+                <p className="text-muted-foreground">2023 – 2024</p>
+                <p className="mt-1">AP Language, Cambridge English, and IB English. Set school record for AP Lang pass rate. Raised FAST ELA scores 32%</p>
+              </div>
+              <div>
+                <p className="font-semibold">Writer @ Recurrent Ventures</p>
+                <p className="text-muted-foreground">2023</p>
+                <p className="mt-1">Wrote essays on international geopolitical conflict</p>
+              </div>
+              <div>
+                <p className="font-semibold">Editorial & Journals Intern @ Ohio State University Press</p>
+                <p className="text-muted-foreground">2021 – 2023</p>
+                <p className="mt-1">Line-edited and typeset 32 manuscripts. Managed social media for five scholarly journals</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Current Projects */}
+          <section>
+            <h3 className="text-2xl font-medium mb-4 text-primary">Current Projects</h3>
+            <div className="space-y-4 text-lg leading-relaxed">
+              <div>
+                <p className="font-semibold">White Horse Mountain Home</p>
+                <p className="mt-1">Branding, design, and digital marketing</p>
+              </div>
+              <div>
+                <a href="https://trivwiz.com" target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-primary transition-colors">Trivia Wizard</a>
+                <p className="mt-1">Trivia app development</p>
+              </div>
+              <div>
+                <a href="https://litparlor.com" target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-primary transition-colors">Lit Parlor</a>
+                <p className="mt-1">Literary discovery and tech ed platform</p>
+              </div>
+              <div>
+                <p className="font-semibold">URSA MARIS</p>
+                <p className="mt-1">Tethered, sensor-heavy survey class ROV designed to execute precise transects of the sea floor, collect sensory data for bathymetric visualizations, capture stable video of marine wildlife, and perform seawall and underwater infrastructure analysis</p>
+              </div>
+              <p className="mt-8 border-t border-border pt-8 italic">
+                Building small, delightful apps that combine AI with thoughtful design—experiments
+                in making technology feel more human. No subscriptions, ever—only pay for what you use.
+                Build things. Be creative. Learn. Have fun.
+              </p>
+            </div>
+          </section>
+        </div>
       </div>
       </div>
     </div>
