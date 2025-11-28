@@ -143,9 +143,8 @@ export default async function Home() {
                 <p className="mt-1">Tethered, sensor-heavy survey class ROV designed to execute precise transects of the sea floor, collect sensory data for bathymetric visualizations, capture stable video of marine wildlife, and perform seawall and underwater infrastructure analysis</p>
               </div>
               <p className="mt-8 border-t border-border pt-8 italic">
-                Building small, delightful apps that combine AI with thoughtful design—experiments
-                in making technology feel more human. No subscriptions, ever—only pay for what you use.
-                Build things. Be creative. Learn. Have fun.
+                Building small, delightful apps that combine AI with thoughtful design. No subscriptions,
+                ever, only pay for what you use. Think freely, build things, be creative, learn, have fun, and be nice.
               </p>
             </div>
           </section>
