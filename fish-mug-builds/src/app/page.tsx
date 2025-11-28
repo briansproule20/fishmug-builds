@@ -151,7 +151,7 @@ export default async function Home() {
               </div>
               <p className="mt-8 border-t border-border pt-8 italic">
                 Building small, light weight apps that combine AI with thoughtful design. No subscriptions,
-                ever, only pay for what you use. Think freely, build things, be creative, learn, have fun, and be nice.
+                ever, only pay for what you use. Think freely, be creative, build cool things, learn, have fun, and be nice.
               </p>
             </div>
           </section>
