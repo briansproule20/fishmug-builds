@@ -142,7 +142,7 @@ export default async function Home() {
                 <p className="mt-1">Branding, design, and digital marketing</p>
               </div>
               <div>
-                <p className="font-semibold">3D Modeling & Prototyping</p>
+                <p className="font-semibold">3D Modeling</p>
                 <p className="mt-1">Design, printing, and prototyping via Bambu Labs</p>
               </div>
               <div>
