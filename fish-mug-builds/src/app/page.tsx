@@ -139,6 +139,10 @@ export default async function Home() {
                 <p className="mt-1">Literary discovery and tech ed platform</p>
               </div>
               <div>
+                <p className="font-semibold">3D Modeling & Prototyping</p>
+                <p className="mt-1">Design, printing, and prototyping via Bambu Labs</p>
+              </div>
+              <div>
                 <p className="font-semibold">URSA MARIS</p>
                 <p className="mt-1">Tethered, sensor-heavy survey class ROV designed to execute precise transects of the sea floor, collect sensory data for bathymetric visualizations, capture stable video of marine wildlife, and perform seawall and underwater infrastructure analysis</p>
               </div>
