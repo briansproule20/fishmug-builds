@@ -127,16 +127,17 @@ export default async function Home() {
             <h3 className="text-2xl font-medium mb-4 text-primary">Current Projects</h3>
             <div className="space-y-4 text-lg leading-relaxed">
               <div>
+                <Link href="/apps" className="font-semibold hover:text-primary transition-colors">Echo App Building</Link>
+                <p className="mt-1">AI-powered apps with usage-based billing</p>
+                <ul className="mt-2 ml-4 space-y-1 text-base">
+                  <li><a href="https://trivwiz.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Trivia Wizard</a> — trivia app development</li>
+                  <li><a href="https://litparlor.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Lit Parlor</a> — literary discovery and tech ed platform</li>
+                  <li><a href="https://bigcorpinc.company" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Big Corp Inc.</a> — corporate satire</li>
+                </ul>
+              </div>
+              <div>
                 <p className="font-semibold">White Horse Mountain Home</p>
                 <p className="mt-1">Branding, design, and digital marketing</p>
-              </div>
-              <div>
-                <a href="https://trivwiz.com" target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-primary transition-colors">Trivia Wizard</a>
-                <p className="mt-1">Trivia app development</p>
-              </div>
-              <div>
-                <a href="https://litparlor.com" target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-primary transition-colors">Lit Parlor</a>
-                <p className="mt-1">Literary discovery and tech ed platform</p>
               </div>
               <div>
                 <p className="font-semibold">3D Modeling & Prototyping</p>
