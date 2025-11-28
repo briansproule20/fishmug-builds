@@ -134,6 +134,7 @@ export default async function Home() {
                   <li><a href="https://trivwiz.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Trivia Wizard</a> — trivia app development</li>
                   <li><a href="https://litparlor.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Lit Parlor</a> — literary discovery and tech ed platform</li>
                   <li><a href="https://bigcorpinc.company" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Big Corp Inc.</a> — corporate satire</li>
+                  <li><a href="https://iwb-one.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Interstellar Weather Bureau</a> — NASA APIs and satirical weatherman</li>
                 </ul>
               </div>
               <div>
