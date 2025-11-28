@@ -19,4 +19,4 @@ Checkout apps I've built to spark creativity, solve problems, and have fun. I’
 - Cursor, Claude Code
 - Open ai models for brainstorming
 - Canva for graphic design, marketing, compiling creative projects
-  
+- Vercel for hosting domains and web analytics
