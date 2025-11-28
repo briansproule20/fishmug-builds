@@ -954,6 +954,23 @@ const allApps = [
     },
   },
   {
+    name: "Music Portfolio",
+    icon: <img src="/app-icons/hosh-tunes-favicon.png" alt="Hosh Tunes" className="size-8" />,
+    href: "https://www.joshjcarey.com/",
+    modalInfo: {
+      fullDescription: "Music portfolio showcasing original compositions by Josh J. Carey. Premium audio experiences curated for the modern listener, featuring acoustic sessions and original works in an elegant, guitar-themed design.",
+      features: [
+        "Original music compositions",
+        "Integrated music player with now playing display",
+        "Acoustic sessions and album organization",
+        "Clean, modern portfolio design",
+        "Track catalog exploration",
+      ],
+      liveUrl: "https://www.joshjcarey.com/",
+      githubUrl: "https://github.com/briansproule20/hosh-tunes",
+    },
+  },
+  {
     name: "NPC Chat",
     icon: <img src="/app-icons/npc-chat favicon.png" alt="NPC Chat" className="size-8" />,
     href: "https://npc-chat-bay.vercel.app/",
