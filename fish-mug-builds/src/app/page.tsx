@@ -103,6 +103,7 @@ export default async function Home() {
                 <p className="font-semibold">Editorial Associate & Builder @ Merit Systems</p>
                 <p className="text-muted-foreground">2024 – Present</p>
                 <p className="mt-1">Design, typesetting, and editorial work for company communications</p>
+                <p className="mt-1">AI app development for Echo. Built analytical tools to identify platform gaps</p>
               </div>
               <div>
                 <p className="font-semibold">English Teacher @ Boyd H. Anderson High School</p>
