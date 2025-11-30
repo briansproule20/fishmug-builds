@@ -3,8 +3,10 @@ Checkout apps I've built to spark creativity, solve problems, and have fun. I’
 
 # App Directory
 - www.litparlor.com
--
--
+- www.trivwiz.com
+- www.iwb-one.vercel.app
+- www.bigcorpinc.company
+- and more!
 
 # Essential Infrastructure
 - Vercel (Hosting)
