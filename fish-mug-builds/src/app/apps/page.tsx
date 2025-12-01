@@ -732,24 +732,6 @@ const allApps = [
     },
   },
   {
-    name: "Seductive Drake",
-    icon: <img src="/app-icons/drake-favicon.png" alt="Seductive Drake" className="size-8" />,
-    href: "https://seductive-drake.vercel.app/",
-    modalInfo: {
-      fullDescription: "Add Drake to any image with this lighthearted image generation tool. Upload your photo and watch the magic happen as Drake seamlessly appears in your picture. A fun, web-based entertainment utility.",
-      features: [
-        "Upload any image or photo",
-        "Automatically add Drake to your pictures",
-        "AI-powered image generation",
-        "Visual effects with stylized design",
-        "Fast processing and generation",
-        "Entertainment-focused image editing",
-      ],
-      liveUrl: "https://seductive-drake.vercel.app/",
-      githubUrl: "https://github.com/briansproule20/seductive-drake",
-    },
-  },
-  {
     name: "Digital Dungeonmaster",
     icon: <img src="/app-icons/dungeonmaster-favicon.png" alt="Digital Dungeonmaster" className="size-8" />,
     href: "https://digital-dungeonmaster.vercel.app/",
