@@ -159,7 +159,7 @@ export default async function Home() {
         </div>
 
         <div className="mt-16 flex justify-center">
-          <Link href="/SprouleTechDeck.pdf" target="_blank" className="w-full max-w-md">
+          <Link href="/deck" className="w-full max-w-md">
             <MovingBorderButton
               as="div"
               borderRadius="1rem"
