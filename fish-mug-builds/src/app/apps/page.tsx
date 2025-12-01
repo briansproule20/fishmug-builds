@@ -955,7 +955,7 @@ const allApps = [
   },
   {
     name: "Music Portfolio",
-    icon: <img src="/app-icons/hosh-tunes-favicon.png" alt="Hosh Tunes" className="size-8" />,
+    icon: <img src="/app-icons/hosh-favicon.png" alt="Hosh Tunes" className="size-8" />,
     href: "https://www.joshjcarey.com/",
     modalInfo: {
       fullDescription: "Music portfolio showcasing original compositions by Josh J. Carey. Premium audio experiences curated for the modern listener, featuring acoustic sessions and original works in an elegant, guitar-themed design.",
