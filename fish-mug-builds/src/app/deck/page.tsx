@@ -80,7 +80,7 @@ export default function DeckPage() {
                 value={pin}
                 onChange={handlePinChange}
                 placeholder="Enter PIN"
-                className="text-center text-2xl tracking-[0.5em] pr-12"
+                className="text-center text-2xl tracking-widest pr-12"
                 autoFocus
               />
               <button
