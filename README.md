@@ -5,6 +5,7 @@ Checkout apps I've built to spark creativity, solve problems, and have fun. I’
 - www.litparlor.com
 - www.trivwiz.com
 - https://iwb-one.vercel.app/
+- https://case-study-rho-plum.vercel.app/
 - www.bigcorpinc.company
 - and more!
 
