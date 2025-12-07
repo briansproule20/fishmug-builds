@@ -3,6 +3,7 @@ import { Providers } from '@/providers';
 import { isSignedIn } from '@/echo';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono, EB_Garamond } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
 const geistSans = Geist({
@@ -59,6 +60,7 @@ export default async function RootLayout({
           <Header title="fishmug builds" signedIn={signedIn} />
           <div className="flex-1">{children}</div>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
