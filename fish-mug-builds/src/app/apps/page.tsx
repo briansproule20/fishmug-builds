@@ -918,24 +918,6 @@ const allApps = [
     },
   },
   {
-    name: "Legal Portfolio",
-    icon: <img src="/app-icons/mrm favicon.png" alt="Legal Portfolio" className="size-8" />,
-    href: "https://www.miaraemassimo.com/",
-    modalInfo: {
-      fullDescription: "Professional legal portfolio for Mia R. Massimo, J.D./LL.M. candidate specializing in sports law and international legal studies. Showcasing expertise, academic achievements, work experience, and published research in entertainment, arts, and sports law.",
-      features: [
-        "Professional legal credentials and expertise",
-        "Academic background and honors showcase",
-        "Sports law industry experience documentation",
-        "Published scholarly research articles",
-        "LinkedIn and professional networking integration",
-        "Specialized focus on international and comparative law",
-      ],
-      liveUrl: "https://www.miaraemassimo.com/",
-      githubUrl: "https://github.com/briansproule20/super-mia-meme",
-    },
-  },
-  {
     name: "Music Portfolio",
     icon: <img src="/app-icons/hosh-favicon.png" alt="Hosh Tunes" className="size-8" />,
     href: "https://www.joshjcarey.com/",
