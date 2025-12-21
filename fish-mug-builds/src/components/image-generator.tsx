@@ -93,6 +93,22 @@ async function editImage(request: EditImageRequest): Promise<ImageResponse> {
   return response.json();
 }
 
+async function uploadToBlob(dataUrl: string): Promise<string> {
+  const response = await fetch('/api/upload-image', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ dataUrl }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Upload failed: ${errorText}`);
+  }
+
+  const { url } = await response.json();
+  return url;
+}
+
 /**
  * Main ImageGenerator component
  *
@@ -225,14 +241,16 @@ export default function ImageGenerator() {
           }
 
           try {
+            // Convert blob URLs to data URLs, then upload to Vercel Blob
             const imageUrls = await Promise.all(
               imageFiles.map(async imageFile => {
-                // Convert blob URL to data URL for API
                 const response = await fetch(imageFile.url);
                 const blob = await response.blob();
-                return await fileToDataUrl(
+                const dataUrl = await fileToDataUrl(
                   new File([blob], 'image', { type: imageFile.mediaType })
                 );
+                // Upload to Vercel Blob to avoid request size limits
+                return await uploadToBlob(dataUrl);
               })
             );
 

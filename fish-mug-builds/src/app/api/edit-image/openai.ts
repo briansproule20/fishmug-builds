@@ -8,6 +8,21 @@ import { dataUrlToFile } from '@/lib/image-utils';
 import { ERROR_MESSAGES } from '@/lib/constants';
 
 /**
+ * Converts a URL (blob URL or data URL) to a File object
+ */
+async function urlToFile(url: string, filename: string): Promise<File> {
+  // If it's a data URL, use the existing utility
+  if (url.startsWith('data:')) {
+    return dataUrlToFile(url, filename);
+  }
+
+  // Otherwise fetch from blob URL
+  const response = await fetch(url);
+  const blob = await response.blob();
+  return new File([blob], filename, { type: blob.type || 'image/png' });
+}
+
+/**
  * Handles OpenAI image editing
  */
 export async function handleOpenAIEdit(
@@ -32,7 +47,9 @@ export async function handleOpenAIEdit(
   });
 
   try {
-    const imageFiles = imageUrls.map(url => dataUrlToFile(url, 'image.png'));
+    const imageFiles = await Promise.all(
+      imageUrls.map((url, i) => urlToFile(url, `image-${i}.png`))
+    );
 
     const result = await openaiClient.images.edit({
       image: imageFiles,

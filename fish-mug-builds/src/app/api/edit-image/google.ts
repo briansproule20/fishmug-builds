@@ -8,6 +8,31 @@ import { getMediaTypeFromDataUrl } from '@/lib/image-utils';
 import { ERROR_MESSAGES } from '@/lib/constants';
 
 /**
+ * Converts a URL to data URL format for Gemini
+ */
+async function urlToDataUrl(url: string): Promise<{ dataUrl: string; mediaType: string }> {
+  // If it's already a data URL, extract info directly
+  if (url.startsWith('data:')) {
+    return {
+      dataUrl: url,
+      mediaType: getMediaTypeFromDataUrl(url),
+    };
+  }
+
+  // Fetch from blob URL and convert to data URL
+  const response = await fetch(url);
+  const blob = await response.blob();
+  const buffer = await blob.arrayBuffer();
+  const base64 = Buffer.from(buffer).toString('base64');
+  const mediaType = blob.type || 'image/png';
+
+  return {
+    dataUrl: `data:${mediaType};base64,${base64}`,
+    mediaType,
+  };
+}
+
+/**
  * Handles Google Gemini image editing
  */
 export async function handleGoogleEdit(
@@ -15,15 +40,18 @@ export async function handleGoogleEdit(
   imageUrls: string[]
 ): Promise<Response> {
   try {
+    // Convert all URLs to data URLs for Gemini
+    const imageData = await Promise.all(imageUrls.map(urlToDataUrl));
+
     const content = [
       {
         type: 'text' as const,
         text: prompt,
       },
-      ...imageUrls.map(imageUrl => ({
+      ...imageData.map(({ dataUrl, mediaType }) => ({
         type: 'image' as const,
-        image: imageUrl, // Direct data URL - Gemini handles it
-        mediaType: getMediaTypeFromDataUrl(imageUrl),
+        image: dataUrl,
+        mediaType,
       })),
     ];
 
