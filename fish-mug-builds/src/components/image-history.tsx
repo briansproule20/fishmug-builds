@@ -9,7 +9,7 @@ import {
   isImageActionable,
 } from '@/lib/image-actions';
 import type { GeneratedImage } from '@/lib/types';
-import { Copy, Download, Edit } from 'lucide-react';
+import { Copy, Download, Edit, Trash2 } from 'lucide-react';
 import NextImage from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
 import { ImageDetailsDialog } from './image-details-dialog';
@@ -43,12 +43,14 @@ interface ImageHistoryItemProps {
   image: GeneratedImage;
   onAddToInput: (files: File[]) => void;
   onImageClick: (image: GeneratedImage) => void;
+  onDelete: (id: string) => void;
 }
 
 const ImageHistoryItem = React.memo(function ImageHistoryItem({
   image,
   onAddToInput,
   onImageClick,
+  onDelete,
 }: ImageHistoryItemProps) {
   const handleAddToInput = useCallback(() => {
     if (!isImageActionable(image)) return;
@@ -71,6 +73,10 @@ const ImageHistoryItem = React.memo(function ImageHistoryItem({
     if (!isImageActionable(image)) return;
     await handleImageCopy(image.imageUrl!);
   }, [image]);
+
+  const handleDelete = useCallback(() => {
+    onDelete(image.id);
+  }, [image.id, onDelete]);
 
   return (
     <div
@@ -145,6 +151,19 @@ const ImageHistoryItem = React.memo(function ImageHistoryItem({
             >
               <Edit size={14} />
             </Button>
+            <Button
+              size="sm"
+              onClick={e => {
+                e.stopPropagation();
+                handleDelete();
+              }}
+              aria-label="Delete this image"
+              title="Delete image"
+              className="h-8 w-8 p-0 bg-white/90 hover:bg-white shadow-lg text-red-500 hover:text-red-600 cursor-pointer hover:scale-110 active:scale-95 transition-transform duration-150 focus:ring-2 focus:ring-blue-500"
+              disabled={!isImageActionable(image)}
+            >
+              <Trash2 size={14} />
+            </Button>
           </div>
         </>
       ) : (
@@ -159,11 +178,15 @@ const ImageHistoryItem = React.memo(function ImageHistoryItem({
 interface ImageHistoryProps {
   imageHistory: GeneratedImage[];
   onAddToInput: (files: File[]) => void;
+  onDelete: (id: string) => void;
+  onClearAll: () => void;
 }
 
 export const ImageHistory = React.memo(function ImageHistory({
   imageHistory,
   onAddToInput,
+  onDelete,
+  onClearAll,
 }: ImageHistoryProps) {
   const [selectedImage, setSelectedImage] = useState<GeneratedImage | null>(
     null
@@ -180,9 +203,29 @@ export const ImageHistory = React.memo(function ImageHistory({
 
   if (imageHistory.length === 0) return null;
 
+  // Count completed (non-loading, non-error) images for Clear All
+  const completedCount = imageHistory.filter(
+    img => !img.isLoading && !img.error && img.imageUrl
+  ).length;
+
   return (
     <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-gray-900">Generated Images</h3>
+      <div className="flex items-center justify-between">
+        <h3 className="text-lg font-semibold text-gray-900">
+          Generated Images
+        </h3>
+        {completedCount > 0 && (
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={onClearAll}
+            className="text-red-500 hover:text-red-600 hover:bg-red-50"
+          >
+            <Trash2 size={14} className="mr-1" />
+            Clear All
+          </Button>
+        )}
+      </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4 transition-all duration-300 ease-out">
         {imageHistory.map(image => (
           <ImageHistoryItem
@@ -190,6 +233,7 @@ export const ImageHistory = React.memo(function ImageHistory({
             image={image}
             onAddToInput={onAddToInput}
             onImageClick={handleImageClick}
+            onDelete={onDelete}
           />
         ))}
       </div>
@@ -198,6 +242,7 @@ export const ImageHistory = React.memo(function ImageHistory({
         image={selectedImage}
         onClose={handleCloseDialog}
         onAddToInput={onAddToInput}
+        onDelete={onDelete}
       />
     </div>
   );

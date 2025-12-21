@@ -25,6 +25,7 @@ import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { useImageStorage } from '@/lib/hooks/useImageStorage';
 import { fileToDataUrl } from '@/lib/image-utils';
 import type {
   EditImageRequest,
@@ -103,8 +104,15 @@ async function editImage(request: EditImageRequest): Promise<ImageResponse> {
  */
 export default function ImageGenerator() {
   const [model, setModel] = useState<ModelOption>('gemini');
-  const [imageHistory, setImageHistory] = useState<GeneratedImage[]>([]);
+  const [pendingImages, setPendingImages] = useState<GeneratedImage[]>([]);
   const promptInputRef = useRef<HTMLFormElement>(null);
+
+  // IndexedDB storage for persistent images
+  const { images: storedImages, saveImage, deleteImage, clearAllImages } =
+    useImageStorage();
+
+  // Combine pending (loading) images with stored images
+  const imageHistory = [...pendingImages, ...storedImages];
 
   // Handle adding files to the input from external triggers (like from image history)
   const handleAddToInput = useCallback((files: File[]) => {
@@ -199,8 +207,8 @@ export default function ImageGenerator() {
         isLoading: true,
       };
 
-      // Add to history immediately for responsive UI
-      setImageHistory(prev => [placeholderImage, ...prev]);
+      // Add to pending images immediately for responsive UI
+      setPendingImages(prev => [placeholderImage, ...prev]);
 
       try {
         let imageUrl: ImageResponse['imageUrl'];
@@ -243,20 +251,24 @@ export default function ImageGenerator() {
           imageUrl = result.imageUrl;
         }
 
-        // Update the existing placeholder entry with the result
-        setImageHistory(prev =>
-          prev.map(img =>
-            img.id === imageId ? { ...img, imageUrl, isLoading: false } : img
-          )
-        );
+        // Create completed image and save to IndexedDB
+        const completedImage: GeneratedImage = {
+          ...placeholderImage,
+          imageUrl,
+          isLoading: false,
+        };
+
+        // Remove from pending and save to storage
+        setPendingImages(prev => prev.filter(img => img.id !== imageId));
+        await saveImage(completedImage);
       } catch (error) {
         console.error(
           `Error ${isEdit ? 'editing' : 'generating'} image:`,
           error
         );
 
-        // Update the placeholder entry with error state
-        setImageHistory(prev =>
+        // Update the pending entry with error state (don't save errors to IndexedDB)
+        setPendingImages(prev =>
           prev.map(img =>
             img.id === imageId
               ? {
@@ -272,7 +284,7 @@ export default function ImageGenerator() {
         );
       }
     },
-    [model]
+    [model, saveImage]
   );
 
   return (
@@ -336,6 +348,8 @@ export default function ImageGenerator() {
       <ImageHistory
         imageHistory={imageHistory}
         onAddToInput={handleAddToInput}
+        onDelete={deleteImage}
+        onClearAll={clearAllImages}
       />
     </div>
   );

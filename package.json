@@ -1,0 +1,9 @@
+{
+  "name": "fishmug-builds-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd fish-mug-builds && npm run dev"
+  }
+}
+

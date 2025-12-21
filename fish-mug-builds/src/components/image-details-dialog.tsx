@@ -16,19 +16,21 @@ import {
   isImageActionable,
 } from '@/lib/image-actions';
 import type { GeneratedImage, ImageActionHandlers } from '@/lib/types';
-import { Copy, Download, Edit } from 'lucide-react';
+import { Copy, Download, Edit, Trash2 } from 'lucide-react';
 import NextImage from 'next/image';
 import { useCallback } from 'react';
 
 interface ImageDetailsDialogProps extends ImageActionHandlers {
   image: GeneratedImage | null;
   onClose: () => void;
+  onDelete: (id: string) => void;
 }
 
 export function ImageDetailsDialog({
   image,
   onClose,
   onAddToInput,
+  onDelete,
 }: ImageDetailsDialogProps) {
   const handleAddToInput = useCallback(() => {
     if (!image || !isImageActionable(image)) return;
@@ -48,6 +50,12 @@ export function ImageDetailsDialog({
     if (!image || !isImageActionable(image)) return;
     await handleImageCopy(image.imageUrl!);
   }, [image]);
+
+  const handleDelete = useCallback(() => {
+    if (!image) return;
+    onDelete(image.id);
+    onClose();
+  }, [image, onDelete, onClose]);
 
   if (!image) return null;
 
@@ -156,6 +164,16 @@ export function ImageDetailsDialog({
             >
               <Edit size={16} />
               Edit
+            </Button>
+            <Button
+              onClick={handleDelete}
+              disabled={!isImageActionable(image)}
+              variant="destructive"
+              className="flex items-center gap-2 justify-center"
+              aria-label="Delete this image"
+            >
+              <Trash2 size={16} />
+              Delete
             </Button>
           </div>
         </div>
