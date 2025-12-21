@@ -93,20 +93,15 @@ async function editImage(request: EditImageRequest): Promise<ImageResponse> {
   return response.json();
 }
 
-async function uploadToBlob(dataUrl: string): Promise<string> {
-  const response = await fetch('/api/upload-image', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ dataUrl }),
+async function uploadToBlob(file: File): Promise<string> {
+  const { upload } = await import('@vercel/blob/client');
+
+  const blob = await upload(file.name, file, {
+    access: 'public',
+    handleUploadUrl: '/api/blob/upload',
   });
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`Upload failed: ${errorText}`);
-  }
-
-  const { url } = await response.json();
-  return url;
+  return blob.url;
 }
 
 /**
@@ -241,16 +236,15 @@ export default function ImageGenerator() {
           }
 
           try {
-            // Convert blob URLs to data URLs, then upload to Vercel Blob
+            // Upload files directly to Vercel Blob (client upload, no size limits)
             const imageUrls = await Promise.all(
-              imageFiles.map(async imageFile => {
+              imageFiles.map(async (imageFile, index) => {
                 const response = await fetch(imageFile.url);
                 const blob = await response.blob();
-                const dataUrl = await fileToDataUrl(
-                  new File([blob], 'image', { type: imageFile.mediaType })
-                );
-                // Upload to Vercel Blob to avoid request size limits
-                return await uploadToBlob(dataUrl);
+                const file = new File([blob], `image-${index}.${imageFile.mediaType?.split('/')[1] || 'png'}`, {
+                  type: imageFile.mediaType || 'image/png',
+                });
+                return await uploadToBlob(file);
               })
             );
 
