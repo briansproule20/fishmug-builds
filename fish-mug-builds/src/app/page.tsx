@@ -103,7 +103,7 @@ export default async function Home() {
               <div>
                 <p className="font-semibold">Editorial Associate & Builder @ Merit Systems</p>
                 <p className="text-muted-foreground">2024 – Present</p>
-                <p className="mt-1">Design, typesetting, and editorial work for company communications</p>
+                <p className="mt-1">Design, typesetting, and editorial work for company communications and <a href="https://github.com/briansproule20/merit-manifesto" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-2">company manifesto</a></p>
                 <p className="mt-1">AI app development for Echo. Built analytical tools to identify platform gaps</p>
               </div>
               <div>
