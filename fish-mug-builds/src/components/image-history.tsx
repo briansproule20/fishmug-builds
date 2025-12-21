@@ -98,9 +98,21 @@ const ImageHistoryItem = React.memo(function ImageHistoryItem({
           <LoadingTimer startTime={image.timestamp} />
         </div>
       ) : image.error ? (
-        <div className="flex flex-col items-center justify-center h-full space-y-2 p-4">
+        <div className="flex flex-col items-center justify-center h-full space-y-2 p-4 relative">
           <div className="text-red-500 text-sm">⚠️ Failed</div>
-          <div className="text-xs text-gray-500 text-center">{image.error}</div>
+          <div className="text-xs text-gray-500 text-center line-clamp-2">{image.error}</div>
+          <Button
+            size="sm"
+            onClick={e => {
+              e.stopPropagation();
+              handleDelete();
+            }}
+            aria-label="Delete this image"
+            title="Delete failed image"
+            className="absolute top-2 right-2 h-8 w-8 p-0 bg-white/90 hover:bg-white shadow-lg text-red-500 hover:text-red-600 cursor-pointer hover:scale-110 active:scale-95 transition-transform duration-150"
+          >
+            <Trash2 size={14} />
+          </Button>
         </div>
       ) : image.imageUrl ? (
         <>
@@ -160,7 +172,6 @@ const ImageHistoryItem = React.memo(function ImageHistoryItem({
               aria-label="Delete this image"
               title="Delete image"
               className="h-8 w-8 p-0 bg-white/90 hover:bg-white shadow-lg text-red-500 hover:text-red-600 cursor-pointer hover:scale-110 active:scale-95 transition-transform duration-150 focus:ring-2 focus:ring-blue-500"
-              disabled={!isImageActionable(image)}
             >
               <Trash2 size={14} />
             </Button>

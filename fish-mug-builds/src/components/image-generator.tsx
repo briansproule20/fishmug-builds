@@ -125,6 +125,20 @@ export default function ImageGenerator() {
   // Combine pending (loading) images with stored images
   const imageHistory = [...pendingImages, ...storedImages];
 
+  // Handle delete for both pending (failed) and stored images
+  const handleDelete = useCallback(
+    async (id: string) => {
+      // Check if it's a pending image (loading or failed)
+      const isPending = pendingImages.some(img => img.id === id);
+      if (isPending) {
+        setPendingImages(prev => prev.filter(img => img.id !== id));
+      } else {
+        await deleteImage(id);
+      }
+    },
+    [pendingImages, deleteImage]
+  );
+
   // Handle adding files to the input from external triggers (like from image history)
   const handleAddToInput = useCallback((files: File[]) => {
     const actions = window.__promptInputActions;
@@ -360,7 +374,7 @@ export default function ImageGenerator() {
       <ImageHistory
         imageHistory={imageHistory}
         onAddToInput={handleAddToInput}
-        onDelete={deleteImage}
+        onDelete={handleDelete}
         onClearAll={clearAllImages}
       />
     </div>
