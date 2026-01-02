@@ -36,8 +36,11 @@ export default async function Home() {
         <h1 className="mb-4 font-bold text-5xl tracking-tight">
           fishmug
         </h1>
-        <p className="mx-auto max-w-2xl text-foreground font-semibold text-2xl mb-3">
+        <p className="mx-auto max-w-2xl text-foreground font-semibold text-2xl mb-1">
           english lit grad turned dev
+        </p>
+        <p className="mx-auto max-w-2xl text-foreground font-semibold text-2xl mb-3">
+          building startups
         </p>
         <p className="mx-auto max-w-2xl text-muted-foreground text-lg">
           apps I've built to spark creativity, solve problems, and have fun
