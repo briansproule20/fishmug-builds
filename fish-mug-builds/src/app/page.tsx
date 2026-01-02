@@ -124,9 +124,9 @@ export default async function Home() {
             </div>
           </section>
 
-          {/* Current Projects */}
+          {/* Projects */}
           <section>
-            <h3 className="text-2xl font-medium mb-4 text-primary">Current Projects</h3>
+            <h3 className="text-2xl font-medium mb-4 text-primary">Projects</h3>
             <div className="space-y-4 text-lg leading-relaxed">
               <div>
                 <Link href="/apps" className="font-semibold hover:text-primary transition-colors">Echo App Building</Link>
