@@ -1,4 +1,4 @@
-import { FolderOpen, Presentation } from 'lucide-react';
+import { FolderOpen, Presentation, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import {
@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/card';
 import { CometCard } from '@/components/ui/comet-card';
 import { MovingBorderButton } from '@/components/ui/moving-border';
+import { CurrentRoleCard, PulsingDot } from '@/components/ui/current-role-card';
 import { WavyBackground } from '@/components/ui/wavy-background';
 
 export default async function Home() {
@@ -94,6 +95,30 @@ export default async function Home() {
                 <p className="text-muted-foreground">Class of 2019</p>
               </div>
             </div>
+          </section>
+
+          {/* Current Role */}
+          <section>
+            <h3 className="text-2xl font-medium mb-4 text-primary flex items-center gap-2">
+              <PulsingDot />
+              Current Role
+            </h3>
+            <CurrentRoleCard>
+              <div className="text-lg leading-relaxed">
+                <p className="font-semibold text-xl">
+                  Product Sourcing & Inquiry Coordinator @ <a href="https://maden.co/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Maden</a>
+                </p>
+                <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1 text-muted-foreground">
+                  <span>Part-time</span>
+                  <span>Jan 2026 – Present</span>
+                  <span className="flex items-center gap-1"><MapPin className="size-4" />Remote</span>
+                </div>
+                <ul className="mt-3 space-y-1 list-disc list-inside">
+                  <li>Source and qualify U.S. manufacturers and component suppliers</li>
+                  <li>Match seller requirements to domestic production capacity</li>
+                </ul>
+              </div>
+            </CurrentRoleCard>
           </section>
 
           {/* Experience */}
