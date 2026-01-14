@@ -1,4 +1,4 @@
-import { FolderOpen, Presentation, MapPin } from 'lucide-react';
+import { FolderOpen, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import {
@@ -9,7 +9,6 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { CometCard } from '@/components/ui/comet-card';
-import { MovingBorderButton } from '@/components/ui/moving-border';
 import { CurrentRoleCard, PulsingDot } from '@/components/ui/current-role-card';
 import { WavyBackground } from '@/components/ui/wavy-background';
 
@@ -184,20 +183,6 @@ export default async function Home() {
               </p>
             </div>
           </section>
-        </div>
-
-        <div className="mt-16 flex justify-center">
-          <Link href="/deck" className="w-full max-w-md">
-            <MovingBorderButton
-              as="div"
-              borderRadius="1rem"
-              containerClassName="h-14"
-              className="gap-2"
-            >
-              <Presentation className="size-5" />
-              View My Professional Deck
-            </MovingBorderButton>
-          </Link>
         </div>
       </div>
       </div>
