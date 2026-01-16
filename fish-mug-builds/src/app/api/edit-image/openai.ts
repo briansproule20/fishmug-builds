@@ -57,6 +57,7 @@ export async function handleOpenAIEdit(
       n: 1,
       size: '1024x1024',
       model: 'gpt-image-1',
+      response_format: 'b64_json',
     });
 
     if (!result.data || result.data.length === 0) {
