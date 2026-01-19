@@ -9,7 +9,7 @@ import {
   isImageActionable,
 } from '@/lib/image-actions';
 import type { GeneratedImage } from '@/lib/types';
-import { Copy, Download, Edit, Trash2 } from 'lucide-react';
+import { Check, Copy, Download, Edit, Trash2 } from 'lucide-react';
 import NextImage from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
 import { ImageDetailsDialog } from './image-details-dialog';
@@ -52,6 +52,8 @@ const ImageHistoryItem = React.memo(function ImageHistoryItem({
   onImageClick,
   onDelete,
 }: ImageHistoryItemProps) {
+  const [copied, setCopied] = useState(false);
+
   const handleAddToInput = useCallback(() => {
     if (!isImageActionable(image)) return;
 
@@ -72,6 +74,8 @@ const ImageHistoryItem = React.memo(function ImageHistoryItem({
   const handleCopy = useCallback(async () => {
     if (!isImageActionable(image)) return;
     await handleImageCopy(image.imageUrl!);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   }, [image]);
 
   const handleDelete = useCallback(() => {
@@ -130,12 +134,20 @@ const ImageHistoryItem = React.memo(function ImageHistoryItem({
                 e.stopPropagation();
                 handleCopy();
               }}
-              aria-label="Copy image to clipboard"
-              title="Copy image"
-              className="h-8 w-8 p-0 bg-white/90 hover:bg-white shadow-lg text-gray-700 hover:text-gray-900 cursor-pointer hover:scale-110 active:scale-95 transition-transform duration-150 focus:ring-2 focus:ring-blue-500"
+              aria-label={copied ? "Copied!" : "Copy image to clipboard"}
+              title={copied ? "Copied!" : "Copy image"}
+              className={`h-8 w-8 p-0 shadow-lg cursor-pointer hover:scale-110 active:scale-95 transition-all duration-150 focus:ring-2 focus:ring-blue-500 ${
+                copied
+                  ? 'bg-green-500 hover:bg-green-500 text-white'
+                  : 'bg-white/90 hover:bg-white text-gray-700 hover:text-gray-900'
+              }`}
               disabled={!isImageActionable(image)}
             >
-              <Copy size={14} />
+              {copied ? (
+                <Check size={14} className="animate-in zoom-in-50 duration-200" />
+              ) : (
+                <Copy size={14} />
+              )}
             </Button>
             <Button
               size="sm"

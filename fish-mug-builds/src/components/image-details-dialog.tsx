@@ -16,9 +16,9 @@ import {
   isImageActionable,
 } from '@/lib/image-actions';
 import type { GeneratedImage, ImageActionHandlers } from '@/lib/types';
-import { Copy, Download, Edit, Trash2 } from 'lucide-react';
+import { Check, Copy, Download, Edit, Trash2 } from 'lucide-react';
 import NextImage from 'next/image';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 interface ImageDetailsDialogProps extends ImageActionHandlers {
   image: GeneratedImage | null;
@@ -32,6 +32,8 @@ export function ImageDetailsDialog({
   onAddToInput,
   onDelete,
 }: ImageDetailsDialogProps) {
+  const [copied, setCopied] = useState(false);
+
   const handleAddToInput = useCallback(() => {
     if (!image || !isImageActionable(image)) return;
 
@@ -49,6 +51,8 @@ export function ImageDetailsDialog({
   const handleCopy = useCallback(async () => {
     if (!image || !isImageActionable(image)) return;
     await handleImageCopy(image.imageUrl!);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   }, [image]);
 
   const handleDelete = useCallback(() => {
@@ -141,11 +145,19 @@ export function ImageDetailsDialog({
             <Button
               onClick={handleCopy}
               disabled={!isImageActionable(image)}
-              className="flex items-center gap-2 justify-center"
-              aria-label="Copy image to clipboard"
+              className={`flex items-center gap-2 justify-center transition-all duration-200 ${
+                copied
+                  ? 'bg-green-500 hover:bg-green-500 text-white'
+                  : ''
+              }`}
+              aria-label={copied ? "Copied!" : "Copy image to clipboard"}
             >
-              <Copy size={16} />
-              Copy
+              {copied ? (
+                <Check size={16} className="animate-in zoom-in-50 duration-200" />
+              ) : (
+                <Copy size={16} />
+              )}
+              {copied ? 'Copied!' : 'Copy'}
             </Button>
             <Button
               onClick={handleDownload}
