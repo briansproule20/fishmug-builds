@@ -2,7 +2,6 @@
 import React from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { MovingBorder } from "./moving-border";
 
 export function CurrentRoleCard({
   children,
@@ -14,18 +13,11 @@ export function CurrentRoleCard({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-xl p-[1px]",
+        "rounded-xl border border-primary/20 bg-background/80 backdrop-blur-sm p-6",
         className
       )}
     >
-      <div className="absolute inset-0">
-        <MovingBorder duration={4000} rx="12px" ry="12px">
-          <div className="h-20 w-20 bg-[radial-gradient(var(--primary)_40%,transparent_60%)] opacity-[0.8]" />
-        </MovingBorder>
-      </div>
-      <div className="relative rounded-xl border border-primary/20 bg-background/80 backdrop-blur-sm p-6">
-        {children}
-      </div>
+      {children}
     </div>
   );
 }
