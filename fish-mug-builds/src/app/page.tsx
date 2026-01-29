@@ -153,7 +153,7 @@ export default async function Home() {
 
           {/* Projects */}
           <section>
-            <h3 className="text-2xl font-medium mb-4 text-primary">Projects</h3>
+            <h3 className="text-2xl font-medium mb-4 text-primary">Side Projects</h3>
             <div className="space-y-4 text-lg leading-relaxed">
               <div>
                 <Link href="/apps" className="font-semibold hover:text-primary transition-colors">Echo App Building</Link>
@@ -171,7 +171,7 @@ export default async function Home() {
               </div>
               <div>
                 <p className="font-semibold">3D Modeling</p>
-                <p className="mt-1">Design, printing, and prototyping via Bambu Labs</p>
+                <p className="mt-1">Designing, printing, and modeling with Bambu Labs A1</p>
               </div>
               <div>
                 <p className="font-semibold">URSA MARIS</p>
