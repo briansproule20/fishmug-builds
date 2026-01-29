@@ -177,6 +177,10 @@ export default async function Home() {
                 <p className="font-semibold">URSA MARIS</p>
                 <p className="mt-1">Tethered, sensor-heavy survey class ROV designed to execute precise transects of the sea floor, collect sensory data for bathymetric visualizations, capture stable video of marine wildlife, and perform seawall and underwater infrastructure analysis</p>
               </div>
+              <div>
+                <p className="font-semibold">AEGIS</p>
+                <p className="mt-1">Defensive security practice spanning network hardening, penetration testing, threat intelligence analysis, secure application development, cryptographic implementation, and DevSecOps pipeline integration — building tools and techniques to identify vulnerabilities, protect systems, and respond to emerging threat actors</p>
+              </div>
               <p className="mt-8 border-t border-border pt-8 italic">
                 Building small, light weight apps that combine AI with thoughtful design. No subscriptions,
                 ever, only pay for what you use. Think freely, be creative, build cool things, learn, have fun, and be nice.
