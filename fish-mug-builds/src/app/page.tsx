@@ -170,8 +170,8 @@ export default async function Home() {
                 <p className="mt-1">Branding, design, and digital marketing</p>
               </div>
               <div>
-                <p className="font-semibold">3D Modeling</p>
-                <p className="mt-1">Designing, printing, and modeling with Bambu Labs A1</p>
+                <p className="font-semibold">3D Printing</p>
+                <p className="mt-1">Designing, modeling, and printing with the Bambu Labs A1</p>
               </div>
               <div>
                 <p className="font-semibold">URSA MARIS</p>
