@@ -1,14 +1,4 @@
-import { ArrowUpRight, ChevronDown, FolderOpen } from 'lucide-react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { CometCard } from '@/components/ui/comet-card';
+import { ArrowUpRight, ChevronDown } from 'lucide-react';
 import { PulsingDot } from '@/components/ui/current-role-card';
 import { HeroFishmug } from './_components/hero-fishmug';
 
@@ -37,6 +27,24 @@ function StatusPill({ status, label }: { status?: PillStatus; label?: string }) 
       {dotClass && <span className={`size-2 rounded-full ${dotClass}`} />}
       {text}
     </span>
+  );
+}
+
+function CollapseSection({
+  title,
+  children,
+}: {
+  title: React.ReactNode;
+  children: React.ReactNode;
+}) {
+  return (
+    <details className="group">
+      <summary className="flex cursor-pointer items-center justify-between gap-4 list-none [&::-webkit-details-marker]:hidden hover:text-primary/80 transition-colors">
+        <h3 className="text-2xl font-medium text-primary">{title}</h3>
+        <ChevronDown className="size-5 text-primary/70 transition-transform group-open:rotate-180" />
+      </summary>
+      <div className="mt-4 text-lg leading-relaxed">{children}</div>
+    </details>
   );
 }
 
@@ -107,10 +115,8 @@ export default async function Home() {
                 <span>Jan 2026 – Present</span>
               </div>
               <ul className="mt-3 space-y-1 list-disc list-inside">
-                <li>Expanded Maden's supplier network with vetted U.S. manufacturers and component suppliers</li>
-                <li>Translated buyer requests into qualified domestic supplier matches</li>
-                <li>Designed and built front-ends for internal tools and <a href="https://tryatlas.maden.co/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-2">Maden Atlas</a></li>
-                <li>Built internal observability dashboards and the integration services that feed them</li>
+                <li>Sourced U.S. manufacturers and matched them to buyer requests, expanding Maden's supplier network</li>
+                <li>Designed front-ends for internal tools, <a href="https://tryatlas.maden.co/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-2">Maden Atlas</a>, and observability dashboards</li>
                 <li>Built an autonomous research agent that continuously feeds Maden's data layer</li>
                 <li>Owned the PostgreSQL layer backing internal services</li>
               </ul>
@@ -119,8 +125,7 @@ export default async function Home() {
 
           {/* Experience (collapsible — role + type + date) */}
           <section>
-            <h3 className="text-2xl font-medium mb-4 text-primary">Experience</h3>
-            <div className="text-lg leading-relaxed">
+            <CollapseSection title="Experience">
               <CollapseRow
                 title="Editorial Associate & Builder @ Merit Systems"
                 meta="2024 – 2025"
@@ -160,13 +165,12 @@ export default async function Home() {
                   <li>Managed social media for five scholarly journals</li>
                 </ul>
               </CollapseRow>
-            </div>
+            </CollapseSection>
           </section>
 
           {/* Education (collapsible — institution + credential + date) */}
           <section>
-            <h3 className="text-2xl font-medium mb-4 text-primary">Education</h3>
-            <div className="text-lg leading-relaxed">
+            <CollapseSection title="Education">
               <CollapseRow
                 title="Columbia University Journalism School"
                 pill={<StatusPill label="Course" />}
@@ -191,13 +195,12 @@ export default async function Home() {
               >
                 <p>Pittsburgh, PA</p>
               </CollapseRow>
-            </div>
+            </CollapseSection>
           </section>
 
           {/* Side Projects (collapsible — name + status + date) */}
           <section>
-            <h3 className="text-2xl font-medium mb-4 text-primary">Side Projects</h3>
-            <div className="text-lg leading-relaxed">
+            <CollapseSection title="Side Projects">
               <CollapseRow
                 title="Agential Commerce"
                 pill={<StatusPill status="ongoing" />}
@@ -229,10 +232,10 @@ export default async function Home() {
               >
                 <p>A multi-phase study.</p>
                 <ul className="mt-2 ml-4 space-y-1.5 list-disc list-outside">
-                  <li><span className="font-semibold">Phase one</span> — defensive security as the way I learn the systems and critical infrastructure that underpin everything I build.</li>
+                  <li><span className="font-semibold">Phase one</span> — understanding the internet: how systems, networks, and the critical infrastructure that underpin everything I build actually work, through the lens of defensive security.</li>
                   <li><span className="font-semibold">Phase two</span> — finding out what I'm actually capable of shipping with coding agents at my side, once I understand the layer beneath them.</li>
                 </ul>
-                <p className="mt-3">The work spans network hardening, penetration testing, threat intelligence analysis, secure application development, cryptographic implementation, and DevSecOps pipeline integration.</p>
+                <p className="mt-3">The work spans network hardening, threat intelligence analysis, secure application development, cryptographic implementation, and DevSecOps pipeline integration.</p>
               </CollapseRow>
 
               <CollapseRow
@@ -287,11 +290,6 @@ export default async function Home() {
                     <span className="text-muted-foreground"> — NASA APIs and satirical weatherman</span>
                   </li>
                 </ul>
-                <p className="mt-4 text-base">
-                  <Link href="/apps" className="text-primary hover:text-primary/80 transition-colors underline decoration-primary/30 underline-offset-2">
-                    View the full app directory →
-                  </Link>
-                </p>
               </CollapseRow>
 
               <CollapseRow
@@ -301,34 +299,9 @@ export default async function Home() {
               >
                 <p>Branding, design, and digital marketing</p>
               </CollapseRow>
-            </div>
+            </CollapseSection>
           </section>
         </div>
-      </div>
-
-      {/* App Directory — pushed to the bottom */}
-      <div className="mx-auto flex max-w-sm justify-center mt-10">
-        <CometCard className="w-full">
-          <Card className="flex flex-col gap-3 py-5">
-            <CardHeader className="px-5">
-              <div className="mb-3 flex items-center justify-center rounded-lg bg-secondary p-3 w-fit">
-                <FolderOpen className="size-7 text-primary" />
-              </div>
-              <CardTitle className="text-2xl">App Directory</CardTitle>
-              <CardDescription className="text-base">
-                Check out the apps I've built
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="mt-auto px-5">
-              <Link href="/apps">
-                <Button className="w-full" variant="outline">
-                  <FolderOpen className="mr-2 size-4" />
-                  View Apps
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-        </CometCard>
       </div>
 
       {/* Closing line */}
