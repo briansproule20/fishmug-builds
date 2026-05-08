@@ -1,5 +1,6 @@
 import { ArrowUpRight, ChevronDown } from 'lucide-react';
 import { PulsingDot } from '@/components/ui/current-role-card';
+import { EncryptText } from '@/components/ui/encrypt-text';
 import { HeroFishmug } from './_components/hero-fishmug';
 
 type PillStatus = 'ongoing' | 'completed' | 'concept';
@@ -93,9 +94,11 @@ export default async function Home() {
       {/* Hero: pixelated fishmug as the statement piece */}
       <div className="mb-16 flex flex-col items-center text-center">
         <HeroFishmug />
-        <h1 className="mb-4 font-bold text-5xl tracking-tight">
-          fishmug
-        </h1>
+        <EncryptText
+          base="fishmug"
+          revealed="brian sproule"
+          className="mb-4 font-bold text-4xl sm:text-5xl tracking-tight select-none whitespace-nowrap"
+        />
       </div>
 
       {/* About Me */}
