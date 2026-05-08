@@ -25,6 +25,32 @@ const Header: FC<HeaderProps> = ({
     pathname.startsWith(path)
   );
 
+  // Home: chromeless — title pinned top-left, hamburger top-right, no bar
+  if (pathname === '/') {
+    return (
+      <header className={`pointer-events-none absolute inset-x-0 top-0 z-20 ${className}`}>
+        <div className="flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+          <Link
+            href="/"
+            aria-label={title}
+            className="pointer-events-auto group"
+          >
+            <Image
+              src="/fishmug-builds.png"
+              alt="fishmug builds logo"
+              width={36}
+              height={36}
+              className="transition-transform group-hover:scale-105"
+            />
+          </Link>
+          <div className="pointer-events-auto">
+            <NavigationMenu />
+          </div>
+        </div>
+      </header>
+    );
+  }
+
   return (
     <header
       className={`border-b border-border bg-card shadow-sm ${className}`}
