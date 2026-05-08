@@ -1,5 +1,5 @@
 'use client';
-import { FolderOpen, Sparkles, Image, Video, MessageSquare, Palette, Code, Zap, X, ExternalLink, Github } from 'lucide-react';
+import { FolderOpen, Sparkles, Image, Video, MessageSquare, Palette, Code, Zap, X, ExternalLink, Github, Beer } from 'lucide-react';
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
@@ -333,6 +333,12 @@ const YesChefPreview = () => (
   </div>
 );
 
+const CoolCooziePreview = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/10 to-accent/20 items-center justify-center">
+    <Beer className="size-20 text-primary" />
+  </div>
+);
+
 const featuredApps = [
   {
     title: "Trivia Wizard",
@@ -605,6 +611,24 @@ const moreApps = [
       githubUrl: "https://github.com/briansproule20/hey-barkeep",
     },
   },
+  {
+    title: "Cool Coozie",
+    description: "Custom printed coozies via x402 micropayments — $16, image to can cooler",
+    header: <CoolCooziePreview />,
+    icon: <Beer className="h-4 w-4" />,
+    modalInfo: {
+      fullDescription: "StableMerch Coozies API — turn any image into a custom-printed neoprene coozie via x402/MPP micropayments. Same artwork printed on front and back of a 12oz can cooler with dye-sublimation, $16 flat (shipping included).",
+      features: [
+        "POST /api/coozie endpoint, $16 per coozie via x402/MPP micropayments",
+        "Accepts HTTP image URLs or base64 data URLs",
+        "Same image printed on front AND back",
+        "Print area 1275×1350px per side, 1:1 square or 4:5 portrait artwork",
+        "Neoprene sleeve with dye-sublimation printing for standard 12oz cans",
+        "OpenAPI 3.1 discovery via GET /openapi.json with x-payment-info extensions",
+      ],
+      liveUrl: "https://coolcoozie.com/",
+    },
+  },
 ];
 
 const allApps = [
@@ -729,6 +753,23 @@ const allApps = [
       ],
       liveUrl: "https://color-forge-rust.vercel.app",
       githubUrl: "https://github.com/briansproule20/color-forge",
+    },
+  },
+  {
+    name: "Cool Coozie",
+    icon: <Beer className="size-8 text-primary" />,
+    href: "https://coolcoozie.com/",
+    modalInfo: {
+      fullDescription: "StableMerch Coozies API — turn any image into a custom-printed neoprene coozie via x402/MPP micropayments. Same artwork printed on front and back of a 12oz can cooler with dye-sublimation, $16 flat (shipping included).",
+      features: [
+        "POST /api/coozie endpoint, $16 per coozie via x402/MPP micropayments",
+        "Accepts HTTP image URLs or base64 data URLs",
+        "Same image printed on front AND back",
+        "Print area 1275×1350px per side, 1:1 square or 4:5 portrait artwork",
+        "Neoprene sleeve with dye-sublimation printing for standard 12oz cans",
+        "OpenAPI 3.1 discovery via GET /openapi.json with x-payment-info extensions",
+      ],
+      liveUrl: "https://coolcoozie.com/",
     },
   },
   {

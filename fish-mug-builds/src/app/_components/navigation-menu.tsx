@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, Home, Video, Image as ImageIcon, MessageSquare, ChevronDown, Sparkles, FolderOpen } from 'lucide-react';
+import { Menu, Home, FolderOpen, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -12,18 +12,17 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+
+function XIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
 
 export function NavigationMenu() {
   const [open, setOpen] = useState(false);
-  const [aiOpen, setAiOpen] = useState(false);
-
-  const aiNavItems = [
-    { href: '/ai', label: 'AI Home', icon: Sparkles },
-    { href: '/chat', label: 'Chat', icon: MessageSquare },
-    { href: '/image', label: 'Image Generation', icon: ImageIcon },
-    { href: '/video', label: 'Video Generation', icon: Video },
-  ];
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -58,30 +57,31 @@ export function NavigationMenu() {
             <FolderOpen className="size-4" />
             <span>Apps</span>
           </Link>
-
-          <Collapsible open={aiOpen} onOpenChange={setAiOpen}>
-            <CollapsibleTrigger className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-foreground font-semibold transition-colors hover:bg-secondary">
-              <div className="flex items-center gap-3">
-                <Sparkles className="size-4" />
-                <span>Echo Studio</span>
-              </div>
-              <ChevronDown className={`size-4 transition-transform ${aiOpen ? 'rotate-180' : ''}`} />
-            </CollapsibleTrigger>
-            <CollapsibleContent className="ml-4 mt-2 space-y-1">
-              {aiNavItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 rounded-lg px-4 py-2.5 text-muted-foreground transition-colors hover:bg-secondary"
-                >
-                  <item.icon className="size-4" />
-                  <span className="text-sm">{item.label}</span>
-                </Link>
-              ))}
-            </CollapsibleContent>
-          </Collapsible>
         </nav>
+
+        <div className="mt-8 border-t border-border pt-6 px-4">
+          <p className="text-xs uppercase tracking-wider text-muted-foreground mb-3">Elsewhere</p>
+          <div className="flex items-center gap-2">
+            <a
+              href="https://github.com/briansproule20"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="flex size-10 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-secondary hover:text-primary"
+            >
+              <Github className="size-5" />
+            </a>
+            <a
+              href="https://x.com/fishmug20"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X (Twitter)"
+              className="flex size-10 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-secondary hover:text-primary"
+            >
+              <XIcon className="size-[1.1rem]" />
+            </a>
+          </div>
+        </div>
       </SheetContent>
     </Sheet>
   );
