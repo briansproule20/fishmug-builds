@@ -102,12 +102,12 @@ export default async function Home() {
                   <span>Jan 2026 – Present</span>
                 </div>
                 <ul className="mt-3 space-y-1 list-disc list-inside">
-                  <li>Source and qualify U.S. manufacturers and component suppliers</li>
-                  <li>Match seller requirements to domestic production capacity</li>
-                  <li>Design and build front-ends for internal tools and <a href="https://tryatlas.maden.co/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-2">marketing sites</a></li>
+                  <li>Sourced and qualified U.S. manufacturers and component suppliers</li>
+                  <li>Matched seller requirements to domestic production capacity</li>
+                  <li>Designed and built front-ends for internal tools and <a href="https://tryatlas.maden.co/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-2">marketing sites</a></li>
                   <li>Built internal observability dashboards and the integration services that feed them</li>
                   <li>Built an autonomous research agent that continuously feeds Maden's data layer</li>
-                  <li>Manage and maintain PostgreSQL databases</li>
+                  <li>Managed and maintained PostgreSQL databases</li>
                 </ul>
               </div>
             </CurrentRoleCard>
@@ -250,7 +250,7 @@ export default async function Home() {
               <CollapseRow
                 title="White Horse Mountain Home"
                 pill={<StatusPill status="completed" />}
-                meta="2023"
+                meta="2024"
               >
                 <p>Branding, design, and digital marketing</p>
               </CollapseRow>
