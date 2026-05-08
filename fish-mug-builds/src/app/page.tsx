@@ -1,4 +1,4 @@
-import { ChevronDown, FolderOpen } from 'lucide-react';
+import { ArrowUpRight, ChevronDown, FolderOpen } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import {
@@ -102,12 +102,12 @@ export default async function Home() {
                   <span>Jan 2026 – Present</span>
                 </div>
                 <ul className="mt-3 space-y-1 list-disc list-inside">
-                  <li>Sourced and qualified U.S. manufacturers and component suppliers</li>
-                  <li>Matched seller requirements to domestic production capacity</li>
-                  <li>Designed and built front-ends for internal tools and <a href="https://tryatlas.maden.co/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-2">marketing sites</a></li>
+                  <li>Expanded Maden's supplier network with vetted U.S. manufacturers and component suppliers</li>
+                  <li>Translated buyer requests into qualified domestic supplier matches</li>
+                  <li>Designed and built front-ends for internal tools and <a href="https://tryatlas.maden.co/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-2">Maden Atlas</a></li>
                   <li>Built internal observability dashboards and the integration services that feed them</li>
                   <li>Built an autonomous research agent that continuously feeds Maden's data layer</li>
-                  <li>Managed and maintained PostgreSQL databases</li>
+                  <li>Owned the PostgreSQL layer backing internal services</li>
                 </ul>
               </div>
             </CurrentRoleCard>
@@ -118,36 +118,43 @@ export default async function Home() {
             <h3 className="text-2xl font-medium mb-4 text-primary">Experience</h3>
             <div className="text-lg leading-relaxed">
               <CollapseRow
-                title={<>Editorial Associate & Builder @ <a href="https://www.merit.systems/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Merit Systems</a></>}
-                pill={<StatusPill label="Builder" />}
+                title="Editorial Associate & Builder @ Merit Systems"
                 meta="2024 – 2025"
               >
-                <p>Design, typesetting, and editorial work for company communications and <a href="https://github.com/briansproule20/merit-manifesto" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-2">company manifesto</a></p>
-                <p className="mt-1">AI app development for Echo. Built analytical tools to identify platform gaps</p>
+                <ul className="ml-5 space-y-1.5 list-disc list-outside marker:text-primary/60">
+                  <li>Designed and typeset the <a href="https://github.com/briansproule20/merit-manifesto" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-2">company manifesto</a></li>
+                  <li>AI app development for Echo; built analytical tools to identify platform gaps</li>
+                </ul>
               </CollapseRow>
 
               <CollapseRow
                 title="English Teacher @ Boyd H. Anderson High School"
-                pill={<StatusPill label="Teacher" />}
                 meta="2023 – 2024"
               >
-                <p>AP Language, Cambridge English, and IB English. Set school record for AP Lang pass rate. Raised FAST ELA scores 32%</p>
+                <ul className="ml-5 space-y-1.5 list-disc list-outside marker:text-primary/60">
+                  <li>Taught AP Language, Cambridge English, and IB English</li>
+                  <li>Set school record for AP Lang pass rate</li>
+                  <li>Raised FAST ELA scores 32%</li>
+                </ul>
               </CollapseRow>
 
               <CollapseRow
                 title="Writer @ Recurrent Ventures"
-                pill={<StatusPill label="Writer" />}
                 meta="2023"
               >
-                <p>Wrote essays on international geopolitical conflict</p>
+                <ul className="ml-5 space-y-1.5 list-disc list-outside marker:text-primary/60">
+                  <li>Wrote essays on international geopolitical conflict</li>
+                </ul>
               </CollapseRow>
 
               <CollapseRow
                 title="Editorial & Journals Intern @ Ohio State University Press"
-                pill={<StatusPill label="Intern" />}
                 meta="2021 – 2023"
               >
-                <p>Line-edited and typeset 32 manuscripts. Managed social media for five scholarly journals</p>
+                <ul className="ml-5 space-y-1.5 list-disc list-outside marker:text-primary/60">
+                  <li>Line-edited and typeset 32 manuscripts</li>
+                  <li>Managed social media for five scholarly journals</li>
+                </ul>
               </CollapseRow>
             </div>
           </section>
@@ -193,9 +200,21 @@ export default async function Home() {
                 meta="2025 – present"
               >
                 <p>Agent-readable commerce primitives — APIs that accept micropayments via x402 / MPP, so an agent (or a human) can transact directly without a checkout dance.</p>
-                <ul className="mt-2 ml-4 space-y-1 text-base">
-                  <li><a href="https://poim.io/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Proof of Intelligence Mint (POIM)</a> — x402-powered trivia on Base; correct answers mint POIC tokens</li>
-                  <li><a href="https://coolcoozie.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Cool Coozie</a> — image-to-coozie API, $16 per coozie via x402 micropayment, dye-sublimated and shipped</li>
+                <ul className="mt-4 ml-5 space-y-3 list-disc list-outside marker:text-primary/60">
+                  <li>
+                    <a href="https://coolcoozie.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-primary underline decoration-primary/50 decoration-2 underline-offset-4 hover:decoration-primary transition-colors">
+                      Cool Coozie
+                      <ArrowUpRight className="size-4" />
+                    </a>
+                    <span className="text-muted-foreground"> — image-to-coozie API, $16 per coozie via x402 micropayment, dye-sublimated and shipped</span>
+                  </li>
+                  <li>
+                    <a href="https://poim.io/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-primary underline decoration-primary/50 decoration-2 underline-offset-4 hover:decoration-primary transition-colors">
+                      Proof of Intelligence Mint (POIM)
+                      <ArrowUpRight className="size-4" />
+                    </a>
+                    <span className="text-muted-foreground"> — x402-powered trivia on Base; correct answers mint POIC tokens</span>
+                  </li>
                 </ul>
               </CollapseRow>
 
@@ -234,13 +253,37 @@ export default async function Home() {
                 meta="2024 – 2025"
               >
                 <p>AI-powered apps with usage-based billing</p>
-                <ul className="mt-2 ml-4 space-y-1 text-base">
-                  <li><a href="https://trivwiz.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Trivia Wizard</a> — trivia app development</li>
-                  <li><a href="https://litparlor.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Lit Parlor</a> — literary discovery and tech ed platform</li>
-                  <li><a href="https://bigcorpinc.company" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Big Corp Inc.</a> — corporate satire</li>
-                  <li><a href="https://iwb-one.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Interstellar Weather Bureau</a> — NASA APIs and satirical weatherman</li>
+                <ul className="mt-4 ml-5 space-y-3 list-disc list-outside marker:text-primary/60">
+                  <li>
+                    <a href="https://trivwiz.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-primary underline decoration-primary/50 decoration-2 underline-offset-4 hover:decoration-primary transition-colors">
+                      Trivia Wizard
+                      <ArrowUpRight className="size-4" />
+                    </a>
+                    <span className="text-muted-foreground"> — trivia app development</span>
+                  </li>
+                  <li>
+                    <a href="https://litparlor.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-primary underline decoration-primary/50 decoration-2 underline-offset-4 hover:decoration-primary transition-colors">
+                      Lit Parlor
+                      <ArrowUpRight className="size-4" />
+                    </a>
+                    <span className="text-muted-foreground"> — literary discovery and tech ed platform</span>
+                  </li>
+                  <li>
+                    <a href="https://bigcorpinc.company" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-primary underline decoration-primary/50 decoration-2 underline-offset-4 hover:decoration-primary transition-colors">
+                      Big Corp Inc.
+                      <ArrowUpRight className="size-4" />
+                    </a>
+                    <span className="text-muted-foreground"> — corporate satire</span>
+                  </li>
+                  <li>
+                    <a href="https://iwb-one.vercel.app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-primary underline decoration-primary/50 decoration-2 underline-offset-4 hover:decoration-primary transition-colors">
+                      Interstellar Weather Bureau
+                      <ArrowUpRight className="size-4" />
+                    </a>
+                    <span className="text-muted-foreground"> — NASA APIs and satirical weatherman</span>
+                  </li>
                 </ul>
-                <p className="mt-3 text-base">
+                <p className="mt-4 text-base">
                   <Link href="/apps" className="text-primary hover:text-primary/80 transition-colors underline decoration-primary/30 underline-offset-2">
                     View the full app directory →
                   </Link>
