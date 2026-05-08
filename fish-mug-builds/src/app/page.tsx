@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { CometCard } from '@/components/ui/comet-card';
-import { CurrentRoleCard, PulsingDot } from '@/components/ui/current-role-card';
+import { PulsingDot } from '@/components/ui/current-role-card';
 import { HeroFishmug } from './_components/hero-fishmug';
 
 type PillStatus = 'ongoing' | 'completed' | 'concept';
@@ -61,11 +61,17 @@ function CollapseRow({
         </div>
       </summary>
       <div className="mt-4 pl-1 pb-2">
-        {(pill || meta) && (
+        {pill ? (
           <div className="mb-3 flex flex-wrap items-center gap-3">
             {pill}
             {meta && <span className="text-sm text-muted-foreground sm:hidden">{meta}</span>}
           </div>
+        ) : (
+          meta && (
+            <div className="mb-3 flex flex-wrap items-center gap-3 sm:hidden">
+              <span className="text-sm text-muted-foreground">{meta}</span>
+            </div>
+          )
         )}
         {children}
       </div>
@@ -93,24 +99,22 @@ export default async function Home() {
               <PulsingDot />
               Current Role
             </h3>
-            <CurrentRoleCard>
-              <div className="text-lg leading-relaxed">
-                <p className="font-semibold text-xl">
-                  Product Sourcing & Inquiry Coordinator @ <a href="https://maden.co/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Maden</a>
-                </p>
-                <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1 text-muted-foreground">
-                  <span>Jan 2026 – Present</span>
-                </div>
-                <ul className="mt-3 space-y-1 list-disc list-inside">
-                  <li>Expanded Maden's supplier network with vetted U.S. manufacturers and component suppliers</li>
-                  <li>Translated buyer requests into qualified domestic supplier matches</li>
-                  <li>Designed and built front-ends for internal tools and <a href="https://tryatlas.maden.co/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-2">Maden Atlas</a></li>
-                  <li>Built internal observability dashboards and the integration services that feed them</li>
-                  <li>Built an autonomous research agent that continuously feeds Maden's data layer</li>
-                  <li>Owned the PostgreSQL layer backing internal services</li>
-                </ul>
+            <div className="text-lg leading-relaxed">
+              <p className="font-semibold text-xl">
+                Product Sourcing & Inquiry Coordinator @ <a href="https://maden.co/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Maden</a>
+              </p>
+              <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1 text-muted-foreground">
+                <span>Jan 2026 – Present</span>
               </div>
-            </CurrentRoleCard>
+              <ul className="mt-3 space-y-1 list-disc list-inside">
+                <li>Expanded Maden's supplier network with vetted U.S. manufacturers and component suppliers</li>
+                <li>Translated buyer requests into qualified domestic supplier matches</li>
+                <li>Designed and built front-ends for internal tools and <a href="https://tryatlas.maden.co/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-2">Maden Atlas</a></li>
+                <li>Built internal observability dashboards and the integration services that feed them</li>
+                <li>Built an autonomous research agent that continuously feeds Maden's data layer</li>
+                <li>Owned the PostgreSQL layer backing internal services</li>
+              </ul>
+            </div>
           </section>
 
           {/* Experience (collapsible — role + type + date) */}
@@ -303,22 +307,22 @@ export default async function Home() {
       </div>
 
       {/* App Directory — pushed to the bottom */}
-      <div className="mx-auto flex max-w-2xl justify-center mt-24">
+      <div className="mx-auto flex max-w-sm justify-center mt-10">
         <CometCard className="w-full">
-          <Card className="flex flex-col">
-            <CardHeader>
-              <div className="mb-4 flex items-center justify-center rounded-lg bg-secondary p-4 w-fit">
-                <FolderOpen className="size-10 text-primary" />
+          <Card className="flex flex-col gap-3 py-5">
+            <CardHeader className="px-5">
+              <div className="mb-3 flex items-center justify-center rounded-lg bg-secondary p-3 w-fit">
+                <FolderOpen className="size-7 text-primary" />
               </div>
-              <CardTitle className="text-3xl">App Directory</CardTitle>
-              <CardDescription className="text-lg">
+              <CardTitle className="text-2xl">App Directory</CardTitle>
+              <CardDescription className="text-base">
                 Check out the apps I've built
               </CardDescription>
             </CardHeader>
-            <CardContent className="mt-auto">
+            <CardContent className="mt-auto px-5">
               <Link href="/apps">
-                <Button className="w-full" size="lg" variant="outline">
-                  <FolderOpen className="mr-2 size-5" />
+                <Button className="w-full" variant="outline">
+                  <FolderOpen className="mr-2 size-4" />
                   View Apps
                 </Button>
               </Link>
