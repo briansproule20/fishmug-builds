@@ -176,7 +176,7 @@ export default async function Home() {
                 pill={<StatusPill label="Course" />}
                 meta="Summer 2023"
               >
-                <p>Publishing Course</p>
+                <p>Publishing Course: book, magazine, and digital</p>
               </CollapseRow>
 
               <CollapseRow
@@ -301,14 +301,14 @@ export default async function Home() {
               </CollapseRow>
             </CollapseSection>
           </section>
-        </div>
-      </div>
 
-      {/* Closing line */}
-      <div className="mx-auto max-w-3xl mt-20 px-4 font-serif">
-        <p className="border-t border-border pt-8 italic text-center text-lg leading-relaxed text-muted-foreground">
-          Think freely. Build cool things. Be nice.
-        </p>
+          {/* Closing line */}
+          <section className="!mt-6">
+            <p className="border-t border-border pt-4 italic text-center text-lg leading-relaxed text-muted-foreground">
+              Think freely. Build cool things. Be nice.
+            </p>
+          </section>
+        </div>
       </div>
     </div>
   );

@@ -41,7 +41,7 @@ export function HeroFishmug() {
       tintColor="#5c3a1f"
       tintStrength={0.7}
       objectFit="contain"
-      className="mb-8"
+      className="block mx-auto mb-8"
     />
   );
 }
