@@ -39,10 +39,10 @@ function CollapseSection({
   children: React.ReactNode;
 }) {
   return (
-    <details className="group">
+    <details className="group/section">
       <summary className="flex cursor-pointer items-center justify-between gap-4 list-none [&::-webkit-details-marker]:hidden hover:text-primary/80 transition-colors">
         <h3 className="text-2xl font-medium text-primary">{title}</h3>
-        <ChevronDown className="size-5 text-primary/70 transition-transform group-open:rotate-180" />
+        <ChevronDown className="size-5 text-primary/70 transition-transform group-open/section:rotate-180" />
       </summary>
       <div className="mt-4 text-lg leading-relaxed">{children}</div>
     </details>
@@ -61,12 +61,12 @@ function CollapseRow({
   children: React.ReactNode;
 }) {
   return (
-    <details className="group border-b border-border/60 py-3">
+    <details className="group/row border-b border-border/60 py-3">
       <summary className="flex cursor-pointer items-center justify-between gap-4 font-semibold list-none [&::-webkit-details-marker]:hidden hover:text-primary transition-colors">
         <span className="min-w-0">{title}</span>
         <div className="flex items-center gap-3 shrink-0 text-sm font-normal">
           {meta && <span className="text-muted-foreground hidden sm:inline">{meta}</span>}
-          <ChevronDown className="size-4 transition-transform group-open:rotate-180" />
+          <ChevronDown className="size-4 transition-transform group-open/row:rotate-180" />
         </div>
       </summary>
       <div className="mt-4 pl-1 pb-2">
@@ -204,6 +204,17 @@ export default async function Home() {
           {/* Side Projects (collapsible — name + status + date) */}
           <section>
             <CollapseSection title="Side Projects">
+              <CollapseRow
+                title="CAIRN"
+                meta="2026 – present"
+              >
+                <p className="italic text-muted-foreground mb-3">Curated Archive of Interactive Records and Notes</p>
+                <div className="mb-3 flex flex-wrap items-center gap-3">
+                  <StatusPill status="ongoing" label="In Development" />
+                </div>
+                <p>A private digital vault that organizes any domain of life — notes, records, research, memories — into a searchable dashboard. Version-controlled on <a href="https://github.com/briansproule20/CAIRN" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-2">GitHub</a>, deployed on Vercel, maintained by Claude Code, enriched by x402 research endpoints. A personal knowledge base with an AI-powered research engine behind it.</p>
+              </CollapseRow>
+
               <CollapseRow
                 title="Agential Commerce"
                 pill={<StatusPill status="ongoing" />}
