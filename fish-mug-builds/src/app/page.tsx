@@ -112,16 +112,25 @@ export default async function Home() {
             </h3>
             <div className="text-lg leading-relaxed">
               <p className="font-semibold text-xl">
-                Product Sourcing & Inquiry Coordinator @ <a href="https://maden.co/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Maden</a>
+                Product Engineer @ <a href="https://maden.co/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Maden</a>
               </p>
               <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1 text-muted-foreground">
-                <span>Jan 2026 – Present</span>
+                <span>May 2026 – Present</span>
               </div>
               <ul className="mt-3 space-y-1 list-disc list-inside">
-                <li>Sourced U.S. manufacturers and matched them to buyer requests, expanding Maden's supplier network</li>
                 <li>Designed front-ends for internal tools, <a href="https://tryatlas.maden.co/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-2">Maden Atlas</a>, and observability dashboards</li>
                 <li>Built an autonomous research agent that continuously feeds Maden's data layer</li>
                 <li>Owned the PostgreSQL layer backing internal services</li>
+              </ul>
+
+              <p className="font-semibold text-xl mt-6">
+                Product Sourcing & Inquiry Coordinator @ <a href="https://maden.co/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Maden</a>
+              </p>
+              <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1 text-muted-foreground">
+                <span>Jan 2026 – May 2026</span>
+              </div>
+              <ul className="mt-3 space-y-1 list-disc list-inside">
+                <li>Sourced U.S. manufacturers and matched them to buyer requests, expanding Maden's supplier network</li>
               </ul>
             </div>
           </section>
