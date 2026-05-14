@@ -21,12 +21,15 @@ const ebGaramond = EB_Garamond({
   subsets: ['latin'],
 });
 
+const description =
+  "brian sproule. english lit grad turned product engineer at maden. apps, side projects, and other things i'm building. think freely, build cool things, be nice.";
+
 export const metadata: Metadata = {
   title: 'fishmug builds',
-  description: 'AI-powered applications with Echo billing integration',
+  description,
   openGraph: {
     title: 'fishmug builds',
-    description: 'AI-powered applications with Echo billing integration',
+    description,
     images: [
       {
         url: '/fishmug-builds.png',
@@ -39,7 +42,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary',
     title: 'fishmug builds',
-    description: 'AI-powered applications with Echo billing integration',
+    description,
     images: ['/fishmug-builds.png'],
   },
 };
